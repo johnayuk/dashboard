@@ -13,13 +13,13 @@ class DashboardController extends Controller
     public function registered(){
        $users = User::all();
 
-        return redirect('/role-register');
+        return view('admin\registered')->with('users',$users);
     }
 
 
     public function edit(Request $request,$id){
          $users = User::findorFail($id);
-         return redirect('admin.editregistered')->with('users',$users);
+         return view('admin.editregistered')->with('users',$users);
 
     }
 
