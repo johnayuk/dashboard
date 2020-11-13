@@ -39,6 +39,10 @@ Route::group(['middleware'=>['auth','admin']], function () {
         return view('admin.adminPage');
     });
 
+    Route::get('/registered', function () {
+        return view('admin.registered');
+    });
+
     Route::get('/user_patient', 'Patient\PatientController@index');
 
     Route::put('/create_patient','Patient\PatientController@createPatient');
