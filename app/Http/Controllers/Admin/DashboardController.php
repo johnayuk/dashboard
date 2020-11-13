@@ -13,7 +13,7 @@ class DashboardController extends Controller
     public function registered(){
        $users = User::all();
 
-        return redirect('/role-register' , compact('users',$users));
+        return redirect('/role-register');
     }
 
 
