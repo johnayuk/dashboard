@@ -13,7 +13,9 @@ class DashboardController extends Controller
     public function registered(){
        $users = User::all();
 
-        return ('registered');
+        // return view('admin\registered' , compact(['users']));
+
+        return redirect('/registered');
     }
 
 

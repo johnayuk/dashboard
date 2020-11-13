@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,7 +41,8 @@ Route::group(['middleware'=>['auth','admin']], function () {
     });
 
     Route::get('/registered', function () {
-        return view('admin.registered');
+        $users = User::all();
+        return view('admin.registered')->with('users',$users);
     });
 
     Route::get('/user_patient', 'Patient\PatientController@index');
