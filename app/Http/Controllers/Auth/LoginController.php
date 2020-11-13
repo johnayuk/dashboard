@@ -31,7 +31,7 @@ class LoginController extends Controller
 
     public function redirectTo(){
         if(Auth::user()->name == 'Admin'){
-               return view('adminPage');
+               return ('adminPage');
         }
         else{
                return 'profile';
