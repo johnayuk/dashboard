@@ -5,14 +5,17 @@ use App\Patient;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Validator;
+use App\Doctor;
 
 class PatientController extends Controller
 {
-    public function index(){
-        $patients = Patient::all();
-        
-         return view('admin\patientdeck')->with('patients',$patients);
-     }
+    // public function user_patient(){
+    //     $patients = Patient::all();
+    //     // return view('admin\patientdeck')->with('patients',$patients);
+
+    //     // $users = User::all();
+    //     return redirect('/user_patient');
+    //  }
 
 
 
@@ -22,7 +25,7 @@ class PatientController extends Controller
             'last_name' => ['required', 'string',],
             'condition' => ['required','string'],
             'ward' => ['required','string'],
-            'doctor_assigned' => ['required','string', 'max:100'],
+            'doctor_id' => ['required'],
             'ward'=>['required','string', 'max:100'],
             'phone'=> ['required','string', 'max:100'],
             
@@ -31,12 +34,23 @@ class PatientController extends Controller
         $patient->name = $request->input('name');
         $patient->last_name = $request->input('last_name');
         $patient->condition = $request->input('condition');
-        $patient->doctor_assigned = $request->input('doctor_assigned');
+        $patient->doctor_id = $request->get('doctor_id');
         $patient->ward = $request->input('ward');
         $patient->phone = $request->input('phone');
 
+// $patient = request()->validate([
+//     'name' =>'required',
+//     'last_name' => 'required',
+//       'condition' => 'required',
+//       'ward' => 'required',
+//       'doctor_id' => 'required',
+//       'phone'=> 'required',
+// ]);
 
-        // dd($patient->name);
+//         Patient::create($patient);
+
+
+        // dd($patient);
 
         $patient->save();
         return redirect('/user_patient')->withErrors(['status' => 'patient record successfully']);
@@ -48,7 +62,7 @@ class PatientController extends Controller
             'name'=>'required',
             'last_name'=>'required',
             'condition'=>'required',
-            'doctor_assigned'=>'required',
+            'doctor_id'=>'required',
             'ward'=>'required',
             'phone'=>'required'
         ]);

@@ -56,14 +56,32 @@ public function create(Request $request){
   $validator = Validator::make($request->all(),[
       'name' => ['required', 'string',],
       'email' => ['required|unique:users', 'string',],
+      'role'=> ['required','string'],
       'phone' => ['required','string'],
+      'image'=>'mimes:jpeg,jpg,png,gif|required|max:10000',
       'password' => ['required','string'],
   ]);
   $user = new User();
   $user->name = $request->input('name');
   $user->email = $request->input('email');
+  $user->role = $request->input('role');
   $user->phone = $request->input('phone');
   $user->password = $request->input('password');
+
+  if ($request->hasFile('image')){
+    $image = $request->file('image');
+    $extension = $image->getClientOriginalExtension();
+    $filename = time().'.'.$extension;
+    $image->move('uploads/image',$filename);
+    $user->image = $filename;
+  //   Image::make($image)->resize(300,300)->save(public_path(). '/uploads/image/'.$filename);
+
+  //   $user = Auth::user();
+  //   $user->image = $filename;
+}else{
+    return $request;
+    $user->image='';
+}
 
 
   // dd($patient->name);

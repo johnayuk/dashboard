@@ -38,7 +38,7 @@ Patient Profiles
                       <th>Name</th>
                       <th>LastName</th>
                       <th>Conditon</th>
-                      <th>DoctorAssigned</th>
+                      <th>Doctor Assigned</th>
                       <th>Ward</th>
                       <th>phone</th>
                       <th>Edit</th>
@@ -53,7 +53,7 @@ Patient Profiles
                        <td>{{$patient->name}}</td>
                        <td>{{$patient->last_name}}</td>
                        <td>{{$patient->condition}}</td>
-                       <td>{{$patient->doctor_assigned}}</td>
+                       <td>{{$patient->doctor->first_name}}</td>
                        <td>{{$patient->ward}}</td>
                        <td>{{$patient->phone}}</td> 
                     <td>
@@ -113,7 +113,7 @@ Patient Profiles
                             </div>
                                 </div>
                                   </div>
-                                  <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#exampleModal{{$patient->id}}">Edit</button>
+                                  <button type="button" class="btn btn-info btn-sm"  data-toggle="modal" data-target="#exampleModal{{$patient->id}}">Edit</button>
                             </td>
 
                           <td>
@@ -144,7 +144,7 @@ Patient Profiles
                           </div>
                         </div>
                       </div>
-                    <button type='button' class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop{{$patient->id}}">Delete</button>
+                    <button type='button' class="btn btn-danger btn-sm" data-toggle="modal" data-target="#staticBackdrop{{$patient->id}}">Delete</button>
                      </td>
                 
                        </tr>
@@ -165,7 +165,7 @@ Patient Profiles
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="addpatientmodalLabel">Add Record</h5>
+          <h5 class="modal-title" id="addpatientmodalLabel">Add New Patient</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -194,10 +194,33 @@ Patient Profiles
                           <input id="patient_ward" type="text" name="ward" class="form-control"  required>
                         </div>
 
-                        <div class="form-group">
-                          <label for="doctor_assigned">Doctor Assigned</label>
-                          <input id="doctor_assigned" type="text" name="doctor_assigned"  class="form-control"  required>
-                        </div>
+                        {{-- <div class="form-group">
+                          <label for="doctor_id">Doctor Assigned</label>
+                          <input id="doctor_id" type="text" name="doctor_id"  class="form-control"  required>
+                        </div> --}}
+
+                        {{-- <div class="form-group">
+                          <label for="doctor_id">Doctor Assigned</label>
+                          <select name="doctor_id" id="doctor_id" class="form-control">
+                            @foreach ($doctors as $doctor)
+                          <option value="{{ $doctor->id }}"> {{$doctor->name}} </option>
+                            @endforeach                             
+                          </select>
+                      </div> --}}
+
+                      <div class="input-group mb-3">
+                        
+                          <label class="input-group-text" for="doctor_id">Doctor Assigned</label>
+                       
+                        <select class="custom-select" id="doctor_id" name="doctor_id">
+                          @foreach ($doctors as $doctor)
+                          <option value="{{ $doctor->id}}"> {{$doctor->first_name}} </option>
+                          @endforeach 
+                        </select>
+                      </div>
+
+
+
 
                         <div class="form-group">
                           <label for="phone">Phone</label>

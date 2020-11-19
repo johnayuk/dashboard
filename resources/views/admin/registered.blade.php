@@ -42,7 +42,7 @@ Registered Roles
                     <thead class=" text-primary">
                       <th>Name</th>
                       <th>phone</th>
-                      <th>usertype</th>
+                      <th>Image</th>
                       <th>email</th>
                       <th>Edit</th>
                       <th>Delete</th>
@@ -55,7 +55,7 @@ Registered Roles
                 
                        <td>{{$user->name}}</td>
                        <td>{{$user->phone}}</td>
-                       <td>{{$user->user_type}}</td>
+                       <td><img src="{{asset('uploads/image/'.$user->image)}}" alt="" width="60px"; height="60px" style="border-radius: 60px"></td>
                        <td>{{$user->email}}</td>
                     <td>
                     
@@ -89,6 +89,7 @@ Registered Roles
                                         <label for="role">phone</label>
                                         <input type="text" name="phone" id="role" value="{{$user->phone}}" class="form-control">
                                         </div>
+
 
                                     </div>
                                       <div class="modal-footer">
@@ -152,7 +153,7 @@ Registered Roles
                 </button>
               </div>
               <div class="modal-body">
-                        <form method="POST" action="{{ url('/createUser') }}">
+                        <form method="POST" enctype="multipart/form-data" files=true action="{{ url('/createUser') }}">
                                 @csrf
                                 @method('PUT')
                               <div class="form-group">
@@ -175,6 +176,16 @@ Registered Roles
                                 <label for="phone">Password</label>
                                 <input for="password" type="text" name="password" class="form-control"  required>
                               </div>
+
+                              <div class="form-group">
+                                <label for="role">Role</label>
+                                <input type="text" name="role"  class="form-control">
+                                </div>
+
+                                <div class="form-group">
+                                  <label class="contol-label">choose file</label>
+                                  <input type="file" name="image" class="form-control" id="image">
+                          </div>
       
                             </div>
                             <div class="modal-footer">

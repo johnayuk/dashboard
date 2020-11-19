@@ -10,13 +10,10 @@ use Validator;
 class DashboardController extends Controller
 {
   
-    public function registered(){
-       $users = User::all();
-
-        // return view('admin\registered' , compact(['users']));
-
-        return redirect('/registered');
-    }
+    // public function registeredUsers(){
+    //    $users = User::all();
+    //     return redirect('/registered');
+    // }
 
 
     public function edit(Request $request,$id){
@@ -54,28 +51,46 @@ class DashboardController extends Controller
           $del =User::findOrFail($id);
           $del->delete();
 
-          return redirect('/role-register')->withErrors('Status', 'user deleted succesfully');
+          return redirect('/registered')->withErrors('Status', 'user deleted succesfully');
     }
 
     
     public function createUser(Request $request){
         $validator = Validator::make($request->all(),[
             'name' => ['required', 'string',],
-            'email' => ['required', 'string',],
+            'email' => ['required|unique:users', 'string',],
             'phone' => ['required','string'],
             'password' => ['required','string'],
+            'role' => ['required','string'],
+             'image'=>'mimes:jpeg,jpg,png,gif|required|max:10000',
         ]);
         $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->phone = $request->input('phone');
         $user->password = $request->input('password');
+        $user->role = $request->input('role');
+
+        if ($request->hasFile('image')){
+            $image = $request->file('image');
+            $extension = $image->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $image->move('uploads/image',$filename);
+            $user->image = $filename;
+          //   Image::make($image)->resize(300,300)->save(public_path(). '/uploads/image/'.$filename);
+        
+          //   $user = Auth::user();
+          //   $user->image = $filename;
+        }else{
+            return $request;
+            $user->image='';
+        }
 
 
-        // dd($user->name);
+        // dd($user);
 
         $user->save();
-        return redirect('/role-register')->withErrors(['status' => 'user record successfully']);
+        return redirect('/registered');
     }
    
 }

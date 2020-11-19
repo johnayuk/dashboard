@@ -32,7 +32,7 @@
 
 @section('content')
 
-
+{{-- 
 <div class="row">
           <div class="col-md-12">
             <div class="card">
@@ -52,7 +52,7 @@
                     <tbody>
                        <tr>
 
-                    <td>nig</td>
+                       <td>{{Auth::user()->name}}</td>
                     <td>aks</td>
                     <td>wer</td>
                     <td>dd</td>
@@ -63,6 +63,73 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div> --}}
+
+
+        {{-- <div class="card">
+          <div class="card-body">
+            <div class="card" style="width: 18rem;">
+              <img src="..." class="card-img-top" alt="...">
+              <div class="card-body">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">{{Auth::user()->name}}</li>
+                  <li class="list-group-item">{{Auth::user()->email}}</li>
+                  <li class="list-group-item">{{Auth::user()->phone}}</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div> --}}
+
+        <div class="card bg-light col-md-3" >
+          <div class="card-body">
+            <div class="text-center">
+            <img src="{{asset('uploads/image/'.Auth::user()->image)}}"  width="80px"; height="80px" style="border-radius: 60px" alt="">
+            </div>
+            <h5 class="card-title">{{Auth::user()->name}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{Auth::user()->email}}</h6>
+            <p class="card-text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam, nisi earum! 
+              Minima quod est reiciendis in beatae magni ex incidunt 
+              necessitatibus aperiam quas odio, nisi iste omnis, porro, vel saepe.
+            </p>
+          </div>
+        </div>
+
+         <div class="card bg-light col-md-4" >
+          <div class="card-body">
+            <h5 class="card-title">More About you</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <form>
+              <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Full Name</label>
+                <div class="col-sm-10">
+                  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{Auth::user()->name}}">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                  <input  readonly class="form-control-plaintext border border-0"  value="{{Auth::user()->email}}">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Phone</label>
+                <div class="col-sm-10">
+                  <input  readonly class="form-control-plaintext border border-0"  value="{{Auth::user()->phone}}">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Age</label>
+                <div class="col-sm-10">
+                  <input  readonly class="form-control-plaintext border border-0"  value="{{Auth::user()->phone}}">
+                </div>
+              </div>
+            </form>
+           
           </div>
         </div>
 

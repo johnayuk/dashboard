@@ -10,13 +10,15 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'phone', 'email', 'password',
+        'name', 'phone', 'email', 'image' ,'role', 'password',
     ];
 
     /**
@@ -42,4 +44,26 @@ class User extends Authenticatable
     {   
         $this->attributes['password'] = bcrypt($password);
     }
+
+
+    
+        protected $table = "users";
+      
+        
+
+    
+    public function appointments()
+    {
+      return $this->hasMany('App\Appointment');
+    }
+
+
+//     protected $fillable =[
+//         'first_name','last_name','image', 'email', 'specialization'
+//   ];
+
+// protected $fillable = [
+//     'name','last_name', 'condition', 'doctor_id', 'ward', 'phone',
+// ];
+
 }

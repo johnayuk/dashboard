@@ -5,8 +5,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>medical</title>
-    <link rel="icon" href="img/favicon.png">
+    <title>Medic</title>
+    <link rel="icon" href="img/Golden.jpg">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- animate CSS -->
@@ -34,7 +34,7 @@
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light mt-4">
-                        <a class="navbar-brand" href="index.html"> <img src="img/logo.png" alt="logo"> </a>
+                        <a class="navbar-brand " href="index.html"> <img class="rounded-circle" src="img/Golden.jpg" alt="logo" style="height: 40px " > </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -271,97 +271,24 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6 col-lg-3">
-                    <div class="single_blog_item">
-                        <div class="single_blog_img">
-                            <img src="img/doctor/doctor_1.png" alt="doctor">
-                            <div class="social_icon">
-                                <ul>
-                                    <li><a href="#"> <i class="ti-facebook"></i> </a></li>
-                                    <li><a href="#"> <i class="ti-twitter-alt"></i> </a></li>
-                                    <li><a href="#"> <i class="ti-instagram"></i> </a></li>
-                                    <li><a href="#"> <i class="ti-skype"></i> </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="single_text">
-                            <div class="single_blog_text">
-                                <h3>DR Adam Billiard</h3>
-                                <p>Heart specialist</p>
-                            </div>
-                        </div>
+                
+
+       @foreach ($doctors->take(4) as $doctor)
+            <div class="col-sm-6 col-lg-3">
+                <img src="{{asset('uploads/image/'.$doctor->image)}}"  width="100%";>
+                <div class="single_text">
+                    <div class="single_blog_text">
+                    <h3>{{$doctor->first_name}}  {{$doctor->last_name}}</h3>
+                    <p>{{$doctor->specialization}}</p>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="single_blog_item">
-                        <div class="single_blog_img">
-                            <img src="img/doctor/doctor_4.png" alt="doctor">
-                            <div class="social_icon">
-                                <ul>
-                                    <li><a href="#"> <i class="ti-facebook"></i> </a></li>
-                                    <li><a href="#"> <i class="ti-twitter-alt"></i> </a></li>
-                                    <li><a href="#"> <i class="ti-instagram"></i> </a></li>
-                                    <li><a href="#"> <i class="ti-skype"></i> </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="single_text">
-                            <div class="single_blog_text">
-                                <h3>DR Adam Billiard</h3>
-                                <p>Medicine specialist</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="single_blog_item">
-                        <div class="single_blog_img">
-                            <img src="img/doctor/doctor_2.png" alt="doctor">
-                            <div class="social_icon">
-                                <ul>
-                                    <li><a href="#"> <i class="ti-facebook"></i> </a></li>
-                                    <li><a href="#"> <i class="ti-twitter-alt"></i> </a></li>
-                                    <li><a href="#"> <i class="ti-instagram"></i> </a></li>
-                                    <li><a href="#"> <i class="ti-skype"></i> </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="single_text">
-                            <div class="single_blog_text">
-                                <h3>DR Fred Macyard</h3>
-                                <p>CHeart specialist</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-lg-3">
-                    <div class="single_blog_item">
-                        <div class="single_blog_img">
-                            <img src="img/doctor/doctor_3.png" alt="doctor">
-                            <div class="social_icon">
-                                <ul>
-                                    <li><a href="#"> <i class="ti-facebook"></i> </a></li>
-                                    <li><a href="#"> <i class="ti-twitter-alt"></i> </a></li>
-                                    <li><a href="#"> <i class="ti-instagram"></i> </a></li>
-                                    <li><a href="#"> <i class="ti-skype"></i> </a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="single_text">
-                            <div class="single_blog_text">
-                                <h3>DR Justin Stuard</h3>
-                                <p>Heart specialist</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+      @endforeach
     </section>
     <!--::doctor_part end::-->
 
     <!--::regervation_part start::-->
-    <section class="regervation_part section_padding">
+    {{-- <section class="regervation_part section_padding">
         <div class="container">
             <div class="row align-items-center regervation_content">
                 <div class="col-lg-7">
@@ -415,12 +342,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </section>
     <!--::regervation_part end::-->
 
     <!--::blog_part start::-->
-    <section class="blog_part section_padding">
+    {{-- <section class="blog_part section_padding">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-xl-8">
@@ -467,7 +394,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!--::blog_part end::-->
 
     <!-- footer part start-->
@@ -544,10 +471,10 @@
         <div class="copyright_part">
             <div class="container">
                 <div class="row align-items-center">
-                    <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    {{-- <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-</p>
+</p> --}}
                     <div class="col-lg-4 col-md-12 text-center text-lg-right footer-social">
                         <a href="#"><i class="ti-facebook"></i></a>
                         <a href="#"> <i class="ti-twitter"></i> </a>

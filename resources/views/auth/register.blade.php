@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ url('create') }}">
+                    <form method="POST" enctype="multipart/form-data" files=true action="{{ url('create') }}">
                         @csrf
                        @method('PUT')
 
@@ -57,6 +57,22 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group row">
+                          
+
+                            <div class="col-md-6">
+                                <input id="email" type="hidden" value="user" class="form-control @error('email') is-invalid @enderror" name="role">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -78,6 +94,11 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required >
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label class="contol-label">choose file</label>
+                            <input type="file" name="image" class="form-control" id="image">
+                    </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

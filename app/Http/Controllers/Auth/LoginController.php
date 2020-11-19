@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
+
 class LoginController extends Controller
 {
     /*
@@ -30,11 +31,13 @@ class LoginController extends Controller
     // protected $redirectTo = RouteServiceProvider::HOME;
 
     public function redirectTo(){
+        $user = Auth::user();
+
         if(Auth::user()->name == 'Admin'){
                return ('adminPage');
         }
         else{
-               return 'profile';
+               return ('profile');
         }
     }
     /**

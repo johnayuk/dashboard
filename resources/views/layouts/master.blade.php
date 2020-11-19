@@ -20,7 +20,9 @@
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
-  <link rel="icon" type="image/png" href="../assets/img/favicon.png">
+  {{-- <link rel="icon" type="image/png" href="../assets/img/favicon.png"> --}}
+  <link rel="icon" href="img/Golden.jpg">
+
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
 @yield('title')
@@ -45,12 +47,13 @@
       <div class="logo">
         
         <a href="/adminPage"  class="simple-text logo-normal">
-           welcome {{ Auth::user()->name }}
+          welcome {{ Auth::user()->name }}
+          <img src="{{asset('uploads/image/'.Auth::user()->image)}}"  width="30px"; height="30px" style="border-radius: 60px" alt="">
         </a>
       </div>
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
-          @if(Auth::check() && Auth::user()->name  == "Admin"|| Auth::user()->name  == "superadmin")
+          @if(Auth::check() && Auth::user()->role  == "admin")
           <li>
             <a href="/adminPage">
               <i class="now-ui-icons design_app"></i>
@@ -59,7 +62,18 @@
           </li>
           @endif
 
-          @if(Auth::check() && Auth::user()->name  == "Admin"|| Auth::user()->name  == "superadmin")
+
+          @if(Auth::check() && Auth::user()->role == "admin")
+          <li>
+            <a href="/department">
+              <i class="now-ui-icons design_app"></i>
+              <p>Departments</p>
+            </a>
+          </li>
+          @endif
+
+
+          @if(Auth::check() && Auth::user()->role  == "admin")
           <li>
             <a href="./user_patient">
               <i class="now-ui-icons education_atom"></i>
@@ -67,33 +81,46 @@
             </a>
           </li>
             @endif
+
+            @if(Auth::check() && Auth::user()->role  == "admin")
+            <li>
+              <a href="./doctor">
+                <i class="now-ui-icons education_atom"></i>
+                <p>Doctors</p>
+              </a>
+            </li>
+              @endif
           
-          {{-- <li>
-            <a href="./map.html">
+          <li>
+            <a href="./view_bookings">
               <i class="now-ui-icons location_map-big"></i>
-              <p>Maps</p>
+              <p>view appointment</p>
             </a>
           </li>
-          <li>
+          {{-- <li>
             <a href="./notifications.html">
               <i class="now-ui-icons ui-1_bell-53"></i>
               <p>Notifications</p>
             </a>
           </li> --}}
 
+          @if(Auth::check() && Auth::user()->role  == "admin")
           <li>
-            <a href="/role-register">
+            <a href="/registered">
               <i class="now-ui-icons users_single-02"></i>
-              <p>User Profile</p>
+              <p>Registered Users</p>
             </a>
           </li>
+          @endif
+
+
           {{-- <li class="active ">
-            <a href="./tables.html">
-              <i class="now-ui-icons design_bullet-list-67"></i>
-              <p>Table List</p>
+            <a href="./view_bookings">
+              <i class="now-ui-icons "></i>
+              <p>view appointment</p>
             </a>
-          </li>
-          <li>
+          </li> --}}
+          {{-- <li>
             <a href="./typography.html">
               <i class="now-ui-icons text_caps-small"></i>
               <p>Typography</p>
