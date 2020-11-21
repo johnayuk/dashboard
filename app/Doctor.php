@@ -7,9 +7,10 @@ use App\Patient;
 
 class Doctor extends Model
 {
-         protected $fillable =[
-        'first_name','last_name','image', 'email', 'specialization'
-        ];
+        //  protected $fillable =[
+        // 'first_name','last_name','image', 'email', 'specialization'
+        // ];
+        protected $guarded=[];
 
 
         public function patients(){

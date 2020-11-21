@@ -9,7 +9,9 @@
 
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
     <title>medical</title>
-    <link rel="icon" href="img/favicon.png">
+    {{-- <link rel="icon" href="img/favicon.png"> --}}
+  <link rel="icon" href="Uploads/medicine.png">
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -27,7 +29,7 @@
             <div class="container">
                 <a class="navbar-brand" href="">
                     {{-- {{ config('app.name', 'Laravel') }} --}}
-                    <h3>Medico</h3>
+                    <h3>GoodHealth <img src="uploads/medicine.png" style="height:50px" alt=""></h3>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>

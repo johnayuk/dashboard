@@ -17,9 +17,11 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'phone', 'email', 'image' ,'role', 'password',
-    ];
+    // protected $fillable = [
+    //     'name', 'phone', 'email', 'image' ,'role', 'password',
+    // ];
+
+    protected $guarded=[];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -55,6 +57,10 @@ class User extends Authenticatable
     public function appointments()
     {
       return $this->hasMany('App\Appointment');
+    }
+
+    public function getPostsCountAttribute(){
+        return $this->appointment()->count();
     }
 
 

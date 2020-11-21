@@ -17,4 +17,9 @@ public function doctors(){
 }
 
 
+public function nurses(){
+    return $this->hasMany('App\Nurse');
+}
+
+
 }

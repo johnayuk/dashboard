@@ -1,40 +1,15 @@
-<!doctype html>
-<html lang="en">
+@extends('layouts.welcomeapp')
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Medic</title>
-    <link rel="icon" href="img/Golden.jpg">
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- animate CSS -->
-    <link rel="stylesheet" href="css/animate.css">
-    <!-- owl carousel CSS -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <!-- themify CSS -->
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <!-- flaticon CSS -->
-    <link rel="stylesheet" href="css/flaticon.css">
-    <!-- magnific popup CSS -->
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <!-- nice select CSS -->
-    <link rel="stylesheet" href="css/nice-select.css">
-    <!-- swiper CSS -->
-    <link rel="stylesheet" href="css/slick.css">
-    <!-- style CSS -->
-    <link rel="stylesheet" href="css/style.css">
-</head>
+@section('content')
 
-<body>
+
     <!--::header part start::-->
     <header class="main_menu home_menu">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light mt-4">
-                        <a class="navbar-brand " href="index.html"> <img class="rounded-circle" src="img/Golden.jpg" alt="logo" style="height: 40px " > </a>
+                        <a class="navbar-brand " href="/"> <img class="rounded-circle" src="uploads/medicine.png" alt="logo" style="height: 60px " > </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse"
                             data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                             aria-expanded="false" aria-label="Toggle navigation">
@@ -58,11 +33,11 @@
                                 
                                     @auth
                                     <li class="nav-item">
-                                        <a href="{{ url('/profile') }}">Home</a>
+                                        <a href="{{ url('/login') }}"><h3>Login</h3></a>
                                     </li>
                                  @else
-                                 <li class="nav-item ">
-                                    <a href="{{ url('login') }}">Login</a>
+                                 <li class="nav-item w-50">
+                                    <a href="{{ url('login') }}" class="text-info w-50"><h3>Login</h3></a>
                                 </li>
                                         {{-- @if (Route::has('register'))
                                             <a href="{{ route('register') }}">Register</a>
@@ -92,7 +67,7 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing
                                 elit sed do eiusmod tempor incididunt ut labore et dolore
                                 magna aliqua. Quis ipsum suspendisse ultrices gravida.Risus cmodo viverra </p>
-                            <a href="#" class="btn_2">Make an appointment</a>
+                            <a href="/login" class="btn_2">Login to Make Appointment</a>
 
                         </div>
                     </div>
@@ -288,114 +263,8 @@
     <!--::doctor_part end::-->
 
     <!--::regervation_part start::-->
-    {{-- <section class="regervation_part section_padding">
-        <div class="container">
-            <div class="row align-items-center regervation_content">
-                <div class="col-lg-7">
-                    <div class="regervation_part_iner">
-                        <form>
-                            <h2>Make an Appointment</h2>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <input type="email" class="form-control" id="inputEmail4" placeholder="Name">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <input type="password" class="form-control" id="inputPassword4"
-                                        placeholder="Email address">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <select class="form-control" id="Select">
-                                        <option value="1" selected>Select service</option>
-                                        <option value="2">Name of service</option>
-                                        <option value="3">Name of service</option>
-                                        <option value="4">Name of service</option>
-                                        <option value="5">Name of service</option>
-                                    </select>
-                                </div>
-                                <div class="form-group time_icon col-md-6">
-                                    <select class="form-control" id="Select2">
-                                        <option value="" selected>Time</option>
-                                        <option value="1">8 AM TO 10AM</option>
-                                        <option value="1">10 AM TO 12PM</option>
-                                        <option value="1">12PM TO 2PM</option>
-                                        <option value="1">2PM TO 4PM</option>
-                                        <option value="1">4PM TO 6PM</option>
-                                        <option value="1">6PM TO 8PM</option>
-                                        <option value="1">4PM TO 10PM</option>
-                                        <option value="1">10PM TO 12PM</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <textarea class="form-control" id="Textarea" rows="4"
-                                        placeholder="Your Note "></textarea>
-                                </div>
-                            </div>
-                            <div class="regerv_btn">
-                                <a href="#" class="btn_2">Make an Appointment</a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-5 col-md-6">
-                    <div class="reservation_img">
-                        <img src="img/reservation.png" alt="" class="reservation_img_iner">
-                    </div>
-                </div>
-            </div>
-        </div> --}}
-    </section>
-    <!--::regervation_part end::-->
-
-    <!--::blog_part start::-->
-    {{-- <section class="blog_part section_padding">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-xl-8">
-                    <div class="section_tittle text-center">
-                        <h2>Our Blog</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="single-home-blog">
-                        <div class="card">
-                            <img src="img/blog/blog_2.png" class="card-img-top" alt="blog">
-                            <div class="card-body">
-                                <a href="blog.html">
-                                    <h5 class="card-title">First cattle which earth unto let health for
-                                        can get and see what you </h5>
-                                </a>
-                                <ul>
-                                    <li> <span class="ti-user"></span>Jhon mike</li>
-                                    <li> <span class="ti-bookmark"></span>Clinic, doctors</li>
-                                </ul>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="single-home-blog">
-                        <div class="card">
-                            <img src="img/blog/blog_3.png" class="card-img-top" alt="blog">
-                            <div class="card-body">
-                                <a href="blog.html">
-                                    <h5 class="card-title">First cattle which earth unto let health for
-                                        can get and see what you </h5>
-                                </a>
-                                <ul>
-                                    <li> <span class="ti-user"></span>Jhon mike</li>
-                                    <li> <span class="ti-bookmark"></span>Clinic, doctors</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!--::blog_part end::-->
+    
+    
 
     <!-- footer part start-->
     <footer class="footer-area">
@@ -490,22 +359,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
     <!-- jquery plugins here-->
 
-    <script src="js/jquery-1.12.1.min.js"></script>
-    <!-- popper js -->
-    <script src="js/popper.min.js"></script>
-    <!-- bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- owl carousel js -->
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <!-- contact js -->
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/jquery.form.js"></script>
-    <script src="js/jquery.validate.min.js"></script>
-    <script src="js/mail-script.js"></script>
-    <script src="js/contact.js"></script>
-    <!-- custom js -->
-    <script src="js/custom.js"></script>
-</body>
+   
 
-</html>
+
+@endsection

@@ -6,6 +6,7 @@ use App\Patient;
 use App\Doctor;
 use App\Appointment;
 use App\Department;
+use App\Nurse;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,9 +60,13 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::get('/adminPage', function () {
         $users = User::all();
         $doctors = Doctor::all();
+        $patients = Patient::all();
+        $appointments = Appointment::all();
+        $departments = Department::all();
+        $nurses = Nurse::all();
         // $users = User::count();
         // dd($doctors);
-        return view('admin.adminPage', compact('users','doctors'));
+        return view('admin.adminPage', compact('users','doctors','patients','appointments','departments','nurses'));
         // ->with('users',$users, $doctors, );
     });
 
@@ -73,6 +78,12 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::get('/department', function () {
         $departments = Department::all();
         return view('department')->with('departments',$departments);
+    });
+
+    Route::get('/nurse', function () {
+        $nurses = Nurse::all();
+        $departments = Department::with(['doctors'])->get();
+        return view('nurse',compact('nurses','departments'));
     });
 
     Route::get('/user_patient', function () {
@@ -90,6 +101,7 @@ Route::group(['middleware'=>['auth','admin']], function () {
 
     Route::put('/createDepartment', 'DepartmentController@createDepartment');
     Route::put('/createDoctor', 'DoctorController@createDoctor');
+    Route::put('/createNurse', 'NurseController@createNurse');
     Route::put('/create_patient','Patient\PatientController@createPatient');
     Route::put('/update_patient/{id}','Patient\PatientController@updatePatient');
     Route::delete('/delete_patient/{id}','Patient\PatientController@delete');

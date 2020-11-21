@@ -44,57 +44,52 @@ Admin
 
         
 
-        <div class="card bg-warning col-md-6 col-lg-3" >
+        <div class="card bg-light col-md-6 col-lg-3" >
           <div class="card-body">
-            <h5 class="card-title">Total users</h5>
-          <h6 class="card-subtitle mb-2 text-muted">This App has {{$users->count()}} user(s)</h6>
+            <h5 class="card-title"> Users <i class="fa fa-users fa-2x text-info" aria-hidden="true"></i></h5>
+          <h6 class="card-subtitle mb-2 ">This App has {{$users->count()-1}} user(s)</h6>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
         </div>
 
-        <div class="card bg-warning col-md-6 col-lg-3" >
+        <div class="card bg-light col-md-6 col-lg-3" >
           <div class="card-body">
-            <h5 class="card-title">Total Number Doctors</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Number of Doctor(s)  {{$doctors->count()}}</h6>
+            <h5 class="card-title">Doctor(s) <i class="fa fa-user-md fa-2x text-info" aria-hidden="true" ></i> </h5>
+            <h6 class="card-subtitle mb-2 ">Number of Doctor(s)  {{$doctors->count()}}</h6>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
         </div>
 
-        <div class="card bg-warning col-md-6 col-lg-3" >
+        <div class="card bg-light col-md-6 col-lg-3" >
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <h5 class="card-title"> Patient(s) <i class="fa fa-users fa-2x text-success" aria-hidden="true"></i></h5>
+            {{-- <h5 class="card-title">Total number of Patient <i class="fa fa-users fa-2x text-info" aria-hidden="true"></i> </h5> --}}
+            <h6 class="card-subtitle mb-2 ">Number of Patient(s)  {{$patients->count()}}</h6>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
           </div>
         </div>
 
-        <div class="card bg-warning col-md-6 col-lg-3" >
+        <div class="card bg-light col-md-6 col-lg-3" >
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <h5 class="card-title">Appointment(s)<i class="fas fa-calendar-alt fa-2x text-warning" aria-hidden="true"></i></h5>
+            <h6 class="card-subtitle mb-2 ">Number of Appointments(s)  {{$appointments->count()}}</h6>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
           </div>
         </div>
 
-        <div class="card bg-warning col-md-6 col-lg-3" >
+        <div class="card bg-light col-md-6 col-lg-3" >
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <h5 class="card-title">Department(s) <i class="fa fa-building fa-2x" aria-hidden="true"></i></h5>
+            <h6 class="card-subtitle mb-2 ">Number of Departments(s)  {{$departments->count()}}</h6>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
           </div>
         </div>
 
-        <div class="card bg-warning col-md-6 col-lg-3" >
+        <div class="card bg-light col-md-6 col-lg-3" >
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <h5 class="card-title">Nurse(s) <i class="fas fa-user-nurse fa-2x text-info"></i></h5>
+            <h6 class="card-subtitle mb-2 ">Number of Nurse(s) {{$nurses->count()}}</h6>
             <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
           </div>
         </div>
 

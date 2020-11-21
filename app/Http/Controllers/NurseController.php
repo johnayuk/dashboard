@@ -1,51 +1,50 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Doctor;
-use Validator;
 
 use Illuminate\Http\Request;
+use App\Nurse;
+use Validator;
 
-class DoctorController extends Controller
+class NurseController extends Controller
 {
-    public function createDoctor(Request $request)
+    public function createNurse(Request $request)
     {
         $validator = Validator::make($request->all(),[
             'first_name' => ['required', 'string',],
             'last_name' => ['required', 'string',],
             'email' => ['required','string'],
-            'specialization' => ['required','string'],
             'department_id' => ['required'],
             'image'=>'mimes:jpeg,jpg,png,gif|required|max:10000',
 
 
         ]);
-        $doctor = new Doctor();
-        $doctor->first_name = $request->input('first_name');
-        $doctor->last_name = $request->input('last_name');
-        $doctor->email = $request->input( 'email');
-        $doctor->specialization = $request->input('specialization' );
-        $doctor->department_id = $request->get('department_id');
+        $nurse = new Nurse();
+        $nurse->first_name = $request->input('first_name');
+        $nurse->last_name = $request->input('last_name');
+        $nurse->email = $request->input( 'email');
+        $nurse->department_id = $request->get('department_id');
 
         if ($request->hasFile('image')){
             $image = $request->file('image');
             $extension = $image->getClientOriginalExtension();
             $filename = time().'.'.$extension;
-            $image->move('uploads/image/doctor',$filename);
-            $doctor->image = $filename;
+            $image->move('uploads/image/nurse',$filename);
+            $nurse->image = $filename;
         //   Image::make($image)->resize(300,300)->save(public_path(). '/uploads/image/'.$filename);
 
         //   $user = Auth::user();
         //   $user->image = $filename;
         }else{
             return $request;
-            $doctor->image='';
+            $nurse->image='';
         }
 
-        // dd($user->name);
+        // dd($nurse->image);
 
-        $doctor->save();
-        return redirect('/doctor');
+        $nurse->save();
+        // dd($nurse->image);
+        return redirect('/nurse');
     }
     
 }

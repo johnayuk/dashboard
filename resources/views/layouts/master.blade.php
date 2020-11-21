@@ -21,7 +21,7 @@
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   {{-- <link rel="icon" type="image/png" href="../assets/img/favicon.png"> --}}
-  <link rel="icon" href="img/Golden.jpg">
+  <link rel="icon" href="uploads/medicine.png">
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
@@ -56,7 +56,8 @@
           @if(Auth::check() && Auth::user()->role  == "admin")
           <li>
             <a href="/adminPage">
-              <i class="now-ui-icons design_app"></i>
+              <i class="fas fa-house-damage"></i>
+              <i class=" design_app"></i>
               <p>Dashboard</p>
             </a>
           </li>
@@ -65,9 +66,12 @@
 
           @if(Auth::check() && Auth::user()->role == "admin")
           <li>
+
             <a href="/department">
-              <i class="now-ui-icons design_app"></i>
-              <p>Departments</p>
+            <i class="fa fa-building"></i>
+
+              {{-- <i class="now-ui-icons design_app"></i> --}}
+              <p>Departments </p>
             </a>
           </li>
           @endif
@@ -76,16 +80,27 @@
           @if(Auth::check() && Auth::user()->role  == "admin")
           <li>
             <a href="./user_patient">
-              <i class="now-ui-icons education_atom"></i>
+              <i class="fas fa-file"></i>
+              <i class="education_atom"></i>
               <p>Patients ProFiles</p>
             </a>
           </li>
             @endif
 
+            
+          {{-- @if(Auth::check() && Auth::user()->role  == "admin") --}}
+          <li>
+            <a href="./profile">
+              <i class="fa fa-address-book" aria-hidden="true"></i>
+              <p>View Profile</p>
+            </a>
+          </li>
+            {{-- @endif --}}
+
             @if(Auth::check() && Auth::user()->role  == "admin")
             <li>
               <a href="./doctor">
-                <i class="now-ui-icons education_atom"></i>
+                <i class="fa fa-user-md fa-2x " aria-hidden="true" ></i>
                 <p>Doctors</p>
               </a>
             </li>
@@ -93,7 +108,7 @@
           
           <li>
             <a href="./view_bookings">
-              <i class="now-ui-icons location_map-big"></i>
+              <i class="fas fa-calendar-alt fa-2x " aria-hidden="true"></i>
               <p>view appointment</p>
             </a>
           </li>
@@ -107,31 +122,21 @@
           @if(Auth::check() && Auth::user()->role  == "admin")
           <li>
             <a href="/registered">
-              <i class="now-ui-icons users_single-02"></i>
+              <i class="fa fa-users fa-2x " aria-hidden="true"></i>
               <p>Registered Users</p>
             </a>
           </li>
           @endif
 
 
-          {{-- <li class="active ">
-            <a href="./view_bookings">
-              <i class="now-ui-icons "></i>
-              <p>view appointment</p>
-            </a>
-          </li> --}}
-          {{-- <li>
-            <a href="./typography.html">
-              <i class="now-ui-icons text_caps-small"></i>
-              <p>Typography</p>
+          @if(Auth::check() && Auth::user()->role  == "admin")
+          <li>
+            <a href="/nurse">
+              <i class="fas fa-user-nurse fa-3x"></i>
+              <p>Nurses</p>
             </a>
           </li>
-          <li class="active-pro">
-            <a href="./upgrade.html">
-              <i class="now-ui-icons arrows-1_cloud-download-93"></i>
-              <p>Upgrade to PRO</p>
-            </a>
-          </li> --}}
+          @endif
         </ul>
       </div>
     </div>
@@ -150,7 +155,7 @@
             </div>
             <a class="navbar-brand" href="#pablo">Table List</a>
           </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <button class="navbar-toggler" type="button"  data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -230,7 +235,7 @@
         
       </div>
 
-      <footer class="footer">
+      {{-- <footer class="footer">
           <div class=" container-fluid ">
           <nav>
             <ul>
@@ -257,7 +262,7 @@
             </script>, Designed by <a href="https://www.invisionapp.com" target="_blank">Invision</a>. Coded by <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
           </div>
         </div>
-      </footer>
+      </footer> --}}
     </div>
   </div>
   

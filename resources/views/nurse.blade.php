@@ -15,7 +15,7 @@
                 <div class="card-header">
                   <h4> <a href="##"  data-toggle="modal" data-target="#addDoctor">
                     {{-- <i class="now-ui-icons"></i> --}}
-                    <p style="color:#007bff">Add A Doctor</p>
+                    <p style="color:#007bff">Add A Nurse</p>
                   </a></h4>
                 </div>
                 <div class="card-body">
@@ -27,20 +27,18 @@
                         <th>LastName</th>
                         <th>Email</th>
                         <th>Department</th>
-                        <th>Specialization</th>
                         <th>Image</th>
-
                       </thead>
 
                       <tbody>
-                        @foreach ($doctors as $doctor)
+                        @foreach ($nurses as $nurse)
                          <tr>
-                         <td>{{ $doctor->first_name}}</td>
-                         <td>{{ $doctor->last_name}}</td>
-                         <td>{{ $doctor->email}}</td>
-                         <td>{{ $doctor->department->name}}</td>
-                         <td>{{ $doctor->specialization}}</td>
-                       <td><img src="{{asset('uploads/image/doctor/'.$doctor->image)}}" alt="" width="60px"; height="60px" style="border-radius: 60px"></td>
+                         <td>{{ $nurse->first_name}}</td>
+                         <td>{{ $nurse->last_name}}</td>
+                         <td>{{ $nurse->email}}</td>
+                         <td>{{ $nurse->department->name}}</td>
+                         {{-- <td><img src="{{asset('uploads/image/'.$doctor->image)}}" alt="" width="60px"; height="60px" style="border-radius: 60px"></td> --}}
+                         <td><img src="{{asset('uploads/image/nurse/'.$nurse->image)}}" alt="" width="60px"; height="60px" style="border-radius: 60px"></td>
 
                          </tr>
                          @endforeach
@@ -67,7 +65,7 @@
           </button>
         </div>
         <div class="modal-body">
-                  <form method="POST"  enctype="multipart/form-data" files=true action="{{ url('/createDoctor') }}">
+                  <form method="POST"  enctype="multipart/form-data" files=true action="{{ url('/createNurse') }}">
                           @csrf
                           @method('PUT')
                         <div class="form-group">
@@ -83,11 +81,6 @@
                         <div class="form-group">
                           <label for="patient_condition">Email</label>
                           <input id="patient_condition" type="text" name="email" class="form-control"  required>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="patient_ward">Specialization</label>
-                          <input  type="text" name="specialization" class="form-control"  required>
                         </div>
 
                        
@@ -114,7 +107,7 @@
 
                       </div>
                       <div class="modal-footer">
-                          <button type="submit" class="btn btn-primary">Submit</button>
+                          <button type="submit" class="btn btn-info">Submit</button>
                       </div>
                   </form>
             </div>

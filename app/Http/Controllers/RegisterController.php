@@ -72,7 +72,7 @@ public function create(Request $request){
     $image = $request->file('image');
     $extension = $image->getClientOriginalExtension();
     $filename = time().'.'.$extension;
-    $image->move('uploads/image',$filename);
+    $image->move('uploads/image/user',$filename);
     $user->image = $filename;
   //   Image::make($image)->resize(300,300)->save(public_path(). '/uploads/image/'.$filename);
 

@@ -32,56 +32,6 @@
 
 @section('content')
 
-{{-- 
-<div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title"> Simple Table</h4>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead class=" text-primary">
-                      <th>Name</th>
-                      <th>country</th>
-                      <th>city</th>
-                    <thead class=" text-primary">
-                     
-                    </thead>
-                    <tbody>
-                       <tr>
-
-                       <td>{{Auth::user()->name}}</td>
-                    <td>aks</td>
-                    <td>wer</td>
-                    <td>dd</td>
-
-                       </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> --}}
-
-
-        {{-- <div class="card">
-          <div class="card-body">
-            <div class="card" style="width: 18rem;">
-              <img src="..." class="card-img-top" alt="...">
-              <div class="card-body">
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">{{Auth::user()->name}}</li>
-                  <li class="list-group-item">{{Auth::user()->email}}</li>
-                  <li class="list-group-item">{{Auth::user()->phone}}</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div> --}}
-
         <div class="card bg-light col-md-3" >
           <div class="card-body">
             <div class="text-center">
@@ -97,7 +47,7 @@
           </div>
         </div>
 
-         <div class="card bg-light col-md-4" >
+         {{-- <div class="card bg-light col-md-4" >
           <div class="card-body">
             <h5 class="card-title">More About you</h5>
             <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -129,9 +79,47 @@
                 </div>
               </div>
             </form>
-           
           </div>
-        </div>
+        </div> --}}
+
+
+        
+
+
+          <div class="card nb-4 col-lg-4 col-md-12">
+              <div class="card-header">
+                <h4 class="card-title"> Simple Table</h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Phone</th>
+                      <th>Age</th>
+                    <thead class=" text-primary">
+                     
+                    </thead>
+                    <tbody>
+                    <tr>
+                    <td>{{Auth::user()->name}}</td>
+                    <td>{{Auth::user()->email}}</td>
+                    <td>{{Auth::user()->phone}}</td>
+                    {{-- <td>{{$appointment->count()}}</td> --}}
+                    <td>12345</td>
+
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+      
+
+
+     
+
 
 @endsection
 

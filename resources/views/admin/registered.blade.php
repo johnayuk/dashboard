@@ -55,7 +55,7 @@ Registered Roles
                 
                        <td>{{$user->name}}</td>
                        <td>{{$user->phone}}</td>
-                       <td><img src="{{asset('uploads/image/'.$user->image)}}" alt="" width="60px"; height="60px" style="border-radius: 60px"></td>
+                       <td><img src="{{asset('uploads/image/user/'.$user->image)}}" alt="" width="60px"; height="60px" style="border-radius: 60px"></td>
                        <td>{{$user->email}}</td>
                     <td>
                     
