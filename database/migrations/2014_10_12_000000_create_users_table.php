@@ -11,6 +11,9 @@ class CreateUsersTable extends Migration
      *
      * @return void
      */
+
+
+     
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
@@ -24,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -35,5 +39,6 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
+        
     }
 }

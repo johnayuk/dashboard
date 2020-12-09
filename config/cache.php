@@ -39,6 +39,7 @@ return [
 
         'array' => [
             'driver' => 'array',
+            'model' => 'App\\Models\User',
         ],
 
         'database' => [

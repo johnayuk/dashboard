@@ -23,7 +23,7 @@ class CreatePatientsTable extends Migration
             $table->string('phone');
             $table->timestamps();
 
-            $table->foreign('doctor_id')->references('id')->on('doctors');
+            $table->foreign('doctor_id')->references('id')->on('doctors')->onDelete('cascade');
         });
     }
     /**

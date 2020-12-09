@@ -105,6 +105,16 @@
               </a>
             </li>
               @endif
+
+
+              @if(Auth::check() && Auth::user()->role  == "admin")
+            <li>
+              <a href="./aboutUs">
+                <i class="fa fa-user-md fa-2x " aria-hidden="true" ></i>
+                <p>AboutUs</p>
+              </a>
+            </li>
+              @endif
           
           <li>
             <a href="./view_bookings">

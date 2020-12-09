@@ -8,19 +8,20 @@ Registered Roles
 
 @section('content')
 
+<div class="container">
+  @if ($errors->any())
+    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+        @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+        @endforeach
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+  @endif
+</div>
 
- <div class="container">
-    @if ($errors->any())
-      <div class="alert alert-primary alert-dismissible fade show" role="alert">
-          @foreach ($errors->all() as $error)
-                  <li>{{ $error }}</li>
-          @endforeach
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-          </button>
-      </div>
-    @endif
-  </div>
+
 
 <div class="row">
           <div class="col-md-12">
@@ -55,7 +56,7 @@ Registered Roles
                 
                        <td>{{$user->name}}</td>
                        <td>{{$user->phone}}</td>
-                       <td><img src="{{asset('uploads/image/user/'.$user->image)}}" alt="" width="60px"; height="60px" style="border-radius: 60px"></td>
+                       <td><img src="{{asset('uploads/image/'.$user->image)}}" alt="" width="60px"; height="60px" style="border-radius: 60px"></td>
                        <td>{{$user->email}}</td>
                     <td>
                     
@@ -70,7 +71,7 @@ Registered Roles
                       </button>
                     </div>
                     <div class="modal-body">
-                                    <form  action="{{url('/update-users/'.$user->id)}}" method="post">
+                                    <form  enctype="multipart/form-data" files=true  action="{{url('/update-users/'.$user->id)}}" method="post">
                                         @csrf
                                         @method('PUT')
 
@@ -89,6 +90,17 @@ Registered Roles
                                         <label for="role">phone</label>
                                         <input type="text" name="phone" id="role" value="{{$user->phone}}" class="form-control">
                                         </div>
+
+
+                                        <div class="form-group">
+                                          <label for="role">Role</label>
+                                          <input type="text" name="role" id="role" value="{{$user->role}}" class="form-control">
+                                          </div>
+
+                                        <div class="file-group mt-2" >
+                                          <label for="file-upload" class="custom-file-upload">choose file</label>
+                                          <input id="file-upload" type="file" name="image"  id="image"/>
+                                      </div>
 
 
                                     </div>

@@ -89,14 +89,20 @@ Patient Profiles
                                         <input type="text" name="condition" id="condition" value="{{$patient->condition}}" class="form-control">
                                         </div>
 
-                                         <div class="form-group">
-                                        <label for="role">DoctorAssigned</label>
-                                        <input type="text" name="doctor_assigned" id="doctor_assigned" value="{{$patient->doctor_assigned}}" class="form-control">
-                                        </div>
+                                        <div class="input-group mb-3">
+                        
+                                          <label class="input-group-text" for="doctor_id">Doctor Assigned</label>
+                                       
+                                        <select class="custom-select" id="doctor_id" name="doctor_id">
+                                          @foreach ($doctors as $doctor)
+                                          <option value="{{ $doctor->id}}"> {{$doctor->first_name}} </option>
+                                          @endforeach 
+                                        </select>
+                                      </div>
 
                                          <div class="form-group">
                                         <label for="role">Ward</label>
-                                        <input type="text" name="ward" id="ward" value="{{$patient->ward}}" class="form-control">
+                                        <input type="text" name="ward"  value="{{$patient->ward}}" class="form-control">
                                         </div>
 
                                          <div class="form-group">

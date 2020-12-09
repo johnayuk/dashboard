@@ -22,7 +22,7 @@ class CreateNursesTable extends Migration
             $table->unsignedBigInteger('department_id');
             $table->timestamps();
 
-            $table->foreign('department_id')->references('id')->on('departments');
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
 
         });
     }

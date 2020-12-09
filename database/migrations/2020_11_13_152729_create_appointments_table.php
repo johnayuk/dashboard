@@ -19,10 +19,10 @@ class CreateAppointmentsTable extends Migration
             $table->string('email');
             $table->string('time');
             $table->string('service');
-            $table->unsignedBigInteger('user_id');
-            $table->timestamps();
+            $table->foreignId('user_id')->constrained('users')->OnDelete('cascade');
+            $table->foreignId('doctor_id')->constrained('doctors')->OnDelete('cascade');
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->timestamps();
         });
     }
 

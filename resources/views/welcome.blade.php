@@ -37,7 +37,7 @@
                                     </li>
                                  @else
                                  <li class="nav-item w-50">
-                                    <a href="{{ url('login') }}" class="text-info w-50"><h3>Login</h3></a>
+                                    <a href="{{ url('login') }}"><h3 class="p-0 m-0" style="Color:#0080ff;">SignIn</h3></a>
                                 </li>
                                         {{-- @if (Route::has('register'))
                                             <a href="{{ route('register') }}">Register</a>
@@ -67,7 +67,7 @@
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing
                                 elit sed do eiusmod tempor incididunt ut labore et dolore
                                 magna aliqua. Quis ipsum suspendisse ultrices gravida.Risus cmodo viverra </p>
-                            <a href="/login" class="btn_2">Login to Make Appointment</a>
+                            <a href="/login" class="btn_2">Login or Register to Make Appointment</a>
 
                         </div>
                     </div>
@@ -94,10 +94,9 @@
                 <div class="col-md-6 col-lg-5">
                     <div class="about_us_text">
                         <h2>About us</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit sed
-                            do eiusmod tempor incididunt ut labore et dolore magna aliqua
-                            Quis ipsum suspendisse ultrices gravida. Risus cmodo viverra
-                            maecenas accumsan lacus vel</p>
+                        @foreach ($about as $about)
+                        <p>{{$about->statement}}</p>
+                        @endforeach
                         <a class="btn_2 " href="#">learn more</a>
                         <div class="banner_item">
                             <div class="single_item">
@@ -250,7 +249,7 @@
 
        @foreach ($doctors->take(4) as $doctor)
             <div class="col-sm-6 col-lg-3">
-                <img src="{{asset('uploads/image/'.$doctor->image)}}"  width="100%";>
+                <img src="{{asset('uploads/image/'.$doctor->user->image)}}"  width="100%";>
                 <div class="single_text">
                     <div class="single_blog_text">
                     <h3>{{$doctor->first_name}}  {{$doctor->last_name}}</h3>

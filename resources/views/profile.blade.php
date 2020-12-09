@@ -29,7 +29,7 @@
 {{ Auth::user()->name }}
 @endsection
 
-
+// => $user-> appointments
 @section('content')
 
         <div class="card bg-light col-md-3" >

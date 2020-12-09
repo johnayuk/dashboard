@@ -1,12 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\User;
-use App\Patient;
-use App\Doctor;
-use App\Appointment;
-use App\Department;
-use App\Nurse;
+use App\Models\User;
+use App\Models\Patient;
+use App\Models\Doctor;
+use App\Models\Appointment;
+use App\Models\Department;
+use App\Models\Nurse;
+use App\Models\AboutUs;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +22,17 @@ use App\Nurse;
 
 Route::get('/', function () {
     $doctors = Doctor::all();
-    return view('welcome')->with('doctors',$doctors);;
+    $about = AboutUs::all();
+    return view('welcome',compact('doctors','about'));
 });
 
 Auth::routes(['register'=>false]);
 
-Route::put('/createAppointment','Appointment\AppointmentController@createAppointment');
+Route::put('/createAppointment','AppointmentController@createAppointment');
+Route::put('/updateAppointment/{id}','AppointmentController@updateAppointment');
+Route::delete('/deleteAppointment/{id}','AppointmentController@deleteAppointment');
+
+
 Route::get('/register', 'RegisterController@index')->name('register');
 Route::put('/create', 'RegisterController@create')->name('create');
 
@@ -47,11 +53,13 @@ Route::get('/profile', 'HomeController@index')->name('profile');
 
 Route::get('/view_bookings', function () {
     $user = Auth::user();
+    $doctors = Doctor::all();
     $appointments = Appointment::all();
     if(Auth::user()->role=="admin"){
-    return view('bookAppointment')->with('appointments', $appointments);
+    return view('bookAppointment',compact('appointments','doctors'));
     }
-    return view('bookAppointment',['appointments' => $user-> appointments]);
+    return view('bookAppointment',([ 'appointments' => $user->appointments, ]))
+    ->with('doctors',$doctors);
 });
 
 
@@ -95,18 +103,31 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::get('/doctor', function () {
         $doctors = Doctor::with(['department'])->get();
         $departments = Department::with(['doctors'])->get();
+        $users = User::all();
         // $departments = Department::all();
-        return view('doctor',compact('departments','doctors'));
+        return view('doctor',compact('departments','doctors','users'));
     });
+     
+    Route::get('aboutUs', 'AboutUsController@index');
+    Route::put('/updateAbout/{id}','AboutUsController@updateAbout');
+
+
 
     Route::put('/createDepartment', 'DepartmentController@createDepartment');
-    Route::put('/createDoctor', 'DoctorController@createDoctor');
     Route::put('/createNurse', 'NurseController@createNurse');
-    Route::put('/create_patient','Patient\PatientController@createPatient');
-    Route::put('/update_patient/{id}','Patient\PatientController@updatePatient');
-    Route::delete('/delete_patient/{id}','Patient\PatientController@delete');
-    Route::get('/role-register', 'Admin\DashboardController@registered');
-    Route::delete('/delete_user/{id}','Admin\DashboardController@delete');
-    Route::put('/update-users/{id}','Admin\DashboardController@update');
-    Route::put('/createUser', 'Admin\DashboardController@createUser');
+    Route::put('/create_patient','PatientController@createPatient');
+    Route::put('/update_patient/{id}','PatientController@updatePatient');
+    Route::delete('/delete_patient/{id}','PatientController@delete');
+    Route::get('/role-register', 'DashboardController@registered');
+    Route::delete('/delete_user/{id}','DashboardController@delete');
+    Route::put('/update-users/{id}','DashboardController@updateUser');
+    Route::put('/createUser', 'DashboardController@createUser');
+
+    Route::put('/createDoctor', 'DoctorController@createDoctor');
+    Route::put('/updateDoctor/{id}','DoctorController@updateDoctor');
+    Route::delete('/deleteDoctor/{id}','DoctorController@deleteDoctor');
+
+    Route::put('/updateNurse/{id}', 'NurseController@updateNurse');
+    Route::delete('/deleteNurse/{id}','NurseController@deleteNurse');
+
 });
