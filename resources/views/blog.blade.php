@@ -385,7 +385,9 @@
             <div class="container">
                 <div class="row justify-content-between">
                     <div class="col-xl-2 col-md-4 col-sm-6 single-footer-widget">
-                        <a href="#" class="footer_logo"> <img src="img/logo.png" alt="#"> </a>
+                        <!-- <a href="#" class="footer_logo"> <img src="img/logo.png" alt="#"> </a> -->
+                        <a class="navbar-brand " href="/"> <img class="rounded-circle" src="uploads/medicine.png" alt="logo" style="height: 60px " ></a>
+                    <h4 style="Color:#0080ff">GoodHealth</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor </p>
                         <div class="social_logo">
                             <a href="#"><i class="ti-facebook"></i></a>
@@ -428,7 +430,7 @@
                         <h4>Newsletter</h4>
                         <p>Seed good winged wherein which night multiply
                             midst does not fruitful</p>
-                        <div class="form-wrap" id="mc_embed_signup">
+                        <!-- <div class="form-wrap" id="mc_embed_signup">
                             <form target="_blank"
                                 action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
                                 method="get" class="form-inline">
@@ -444,7 +446,7 @@
 
                                 <div class="info"></div>
                             </form>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -454,7 +456,7 @@
             <div class="container">
                 <div class="row align-items-center">
                     <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+<!-- Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a> -->
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 </p>
                     <div class="col-lg-4 col-md-12 text-center text-lg-right footer-social">
