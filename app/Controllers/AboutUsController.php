@@ -9,11 +9,11 @@ use Illuminate\Http\Request;
 class AboutUsController extends Controller
 {
 
-    public function index(){
-          $about = AboutUs::all();
+    // public function index(){
+    //       $about = AboutUs::all();
 
-          return view('/aboutUs',compact('about'));
-    }
+    //       return view('/aboutUs',compact('about'));
+    // }
 
 
     public function updateAbout(Request $request, $aboutId){

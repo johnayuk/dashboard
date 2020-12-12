@@ -26,6 +26,8 @@ Route::get('/', function () {
     return view('welcome',compact('doctors','about'));
 });
 
+Route::get('/blog','BlogController@index');
+
 Auth::routes(['register'=>false]);
 
 Route::put('/createAppointment','AppointmentController@createAppointment');
@@ -108,8 +110,20 @@ Route::group(['middleware'=>['auth','admin']], function () {
         return view('doctor',compact('departments','doctors','users'));
     });
      
-    Route::get('aboutUs', 'AboutUsController@index');
+    // Route::get('aboutUs', 'AboutUsController@index');
     Route::put('/updateAbout/{id}','AboutUsController@updateAbout');
+
+
+    // $about = AboutUs::all();
+
+    // return view('/aboutUs',compact('about'));
+
+
+    Route::get('/aboutUs', function () {
+        $about = AboutUs::all();
+
+        return view('/aboutUs')->with('about',$about);
+    });
 
 
 

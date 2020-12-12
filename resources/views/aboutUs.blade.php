@@ -50,7 +50,7 @@
 
                                         <h3>Edit User : {{ $about->id}}</h3>
 
-                                    <textarea name="statement" id="" cols="30" rows="10">
+                                    <textarea name="statement" value="$about->statement" id="" cols="30" rows="10">
                                     
                                     </textarea>
 
