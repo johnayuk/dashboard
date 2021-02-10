@@ -15,6 +15,7 @@ class CreateDoctorsTable extends Migration
     {
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
             // $table->string('first_name');
             // $table->string('last_name');
             // $table->string('image');
@@ -24,7 +25,7 @@ class CreateDoctorsTable extends Migration
             $table->unsignedBigInteger('department_id');
 
             $table->timestamps();
-            $table->foreignId('user_id')->constrained('users')->OnDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->OnDelete('cascade');
 
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
 

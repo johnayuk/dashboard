@@ -16,6 +16,7 @@ class AppointmentRepository{
 
         $appointments = new Appointment();
         $appointments->name = $request['name'];
+        $appointments->phone = $request[ 'phone'];
         $appointments->email = $request[ 'email'];
         $appointments->time = $request['time'];
         $appointments->service = $request['service'];

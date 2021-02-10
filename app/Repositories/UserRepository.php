@@ -15,9 +15,13 @@ class UserRepository{
 
         $user = new User();
         $user->name = $request['name'];
+        $user->lastName = $request['lastName'];
         $user->email = $request['email'];
         $user->role = $request['role'];
         $user->phone = $request['phone'];
+        $user->specialization = $request['specialization'];
+        $user->address = $request['address'];
+        $user->dateEmployed= $request['dateEmployed'];
         $user->password = $request['password'];
 
         if ($request['image']){

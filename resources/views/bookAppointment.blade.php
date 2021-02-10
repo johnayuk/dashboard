@@ -34,10 +34,11 @@
                 <div class="card-body">
                   <div class="table-responsive">
                     
-                    <table class="table">
+                    <table id="myTable" class="table">
                       <thead class=" text-primary">
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Phone</th>
                         <th>Time</th>
                         <th>Service</th>
                         <th>Who booked</th>
@@ -47,8 +48,10 @@
                       <tbody>
                         @foreach ($appointments as $appointment)
                          <tr>
+                         <td><input type="checkbox" name="phone[]" id="" class="checkbox" value="{{ $appointment->phone}}"></td>
                          <td>{{ $appointment->name}}</td>
                          <td>{{ $appointment->email}}</td>
+                         <td>{{ $appointment->phone}}</td>
                          <td>{{ $appointment->time}}</td>
                          <td>{{ $appointment->service}}</td>
                          <td>{{ $appointment->user->name}}</td>
@@ -189,6 +192,12 @@
                           <label for="_Email">Email</label>
                           <input type="email" name="email" class="form-control" id="inputPassword4">
                       </div>
+
+                      <div class="form-group col-md-6">
+                        <label for="_Phone">Phone</label>
+                        <input type="text" name="phone" class="form-control" id="inputPassword4">
+                    </div>
+
                       <div class="form-group col-md-6">
                           <label for="_Service">Service</label>
                           <select class="form-control" id="Select" name="service">
@@ -234,18 +243,11 @@
 
 
 @section('script')
-<!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <!-- Chart JS -->
-  <script src="../assets/js/plugins/chartjs.min.js"></script>
-  <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
-  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
+<script>
+      $(document).ready( function () {
+          $('#myTable').DataTable();
+      } );
+
+  </script>
+
 @endsection

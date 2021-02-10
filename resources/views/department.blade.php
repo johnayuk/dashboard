@@ -21,7 +21,7 @@
                 <div class="card-body">
                   <div class="table-responsive">
                     
-                    <table class="table">
+                    <table id="myTable" class="table">
                       <thead class=" text-primary">
                         <th>Name</th>
                         <th>Created At</th>
@@ -122,10 +122,19 @@
                   <form method="POST"  action="{{ url('/createDepartment') }}">
                           @csrf
                           @method('PUT')
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                           <label for="_name">Name</label>
                           <input for="name" type="text" name="name" class="form-control"  required>
-                        </div>
+                        </div> --}}
+
+                        <div class="form-group">
+                          <label for="_name">Name</label>
+                          <select class="form-control" id="Select" name="name">
+                              <option value="surgical" selected>Surgical</option>
+                              <option value="administration">Administration</option>
+                              <option value="pharmacy">Pharmacy</option>
+                          </select>
+                      </div>
 
                       </div>
                       <div class="modal-footer">
@@ -141,18 +150,10 @@
 
 
 @section('script')
-<!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <!-- Chart JS -->
-  <script src="../assets/js/plugins/chartjs.min.js"></script>
-  <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
-  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
+<script>
+      $(document).ready( function () {
+          $('#myTable').DataTable();
+      } );
+
+  </script>
 @endsection

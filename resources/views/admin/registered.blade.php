@@ -39,9 +39,10 @@ Registered Roles
               </div>
               <div class="card-body">
                 <div class="table-responsive">
-                  <table class="table">
+                  <table id="myTable" class="table">
                     <thead class=" text-primary">
                       <th>Name</th>
+                      <th>Role</th>
                       <th>phone</th>
                       <th>Image</th>
                       <th>email</th>
@@ -55,6 +56,7 @@ Registered Roles
                        <tr>
                 
                        <td>{{$user->name}}</td>
+                       <td>{{$user->role}}</td>
                        <td>{{$user->phone}}</td>
                        <td><img src="{{asset('uploads/image/'.$user->image)}}" alt="" width="60px"; height="60px" style="border-radius: 60px"></td>
                        <td>{{$user->email}}</td>
@@ -96,6 +98,9 @@ Registered Roles
                                           <label for="role">Role</label>
                                           <input type="text" name="role" id="role" value="{{$user->role}}" class="form-control">
                                           </div>
+
+
+                                        
 
                                         <div class="file-group mt-2" >
                                           <label for="file-upload" class="custom-file-upload">choose file</label>
@@ -189,10 +194,16 @@ Registered Roles
                                 <input for="password" type="text" name="password" class="form-control"  required>
                               </div>
 
-                              <div class="form-group">
-                                <label for="role">Role</label>
-                                <input type="text" name="role"  class="form-control">
-                                </div>
+                              
+
+                                <div class="form-group">
+                                  <label for="_role">Role</label>
+                                  <select class="form-control" id="Select" name="role">
+                                      <option value="user" selected>User</option>
+                                      <option value="admin">Admin</option>
+                                      <option value="doctor">Doctor</option>
+                                  </select>
+                              </div>
 
                                 <div class="form-group">
                                   <label class="contol-label">choose file</label>
@@ -217,20 +228,12 @@ Registered Roles
 
 
 @section('script')
-<!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <!-- Chart JS -->
-  <script src="../assets/js/plugins/chartjs.min.js"></script>
-  <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
-  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
+<script>
+      $(document).ready( function () {
+          $('#myTable').DataTable();
+      } );
+
+  </script>
 @endsection
 
 

@@ -8,90 +8,64 @@ Admin
 
 @section('content')
 
-{{-- 
-<div class="row">
-          <div class="col-md-12">
-            <div class="card">
-              <div class="card-header">
-                <h4 class="card-title"> Simple Table</h4>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table">
-                    <thead class=" text-primary">
-                      <th>Name</th>
-                      <th>country</th>
-                      <th>city</th>
-                    <thead class=" text-primary">
-                     
-                    </thead>
-                    <tbody>
-                       <tr>
 
-                    <td>nig</td>
-                    <td>aks</td>
-                    <td>wer</td>
-                    <td>dd</td>
 
-                       </tr>
-                    </tbody>
-                  </table>
+        <div class="container">
+
+
+              <div class="card bg-light col-md-6 col-lg-3" >
+                <div class="card-body">
+                  <i class="fa fa-users fa-2x text-info" aria-hidden="true"></i>
+                  <h5 class="card-title"> Users  {{$users->count()-1}}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
               </div>
-            </div>
-          </div>
-        </div> --}}
+      
+              <div class="card bg-light col-md-6 col-lg-3" >
+                <div class="card-body">
+                  <i class="fa fa-user-md fa-2x text-info" aria-hidden="true" ></i>
+                  <h5 class="card-title">Doctor(s)   {{$doctors->count()}}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+      
+              <div class="card bg-light col-md-6 col-lg-3" >
+                <div class="card-body">
+                  <i class="fa fa-users fa-2x text-success" aria-hidden="true"></i>
+                  <h5 class="card-title"> Patient(s)  {{$patients->count()}}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+      
+              <div class="card bg-light col-md-6 col-lg-3" >
+                <div class="card-body">
+                  <i class="fas fa-calendar-alt fa-2x text-warning" aria-hidden="true"></i>
+                  <h5 class="card-title">Appointment(s)  {{$appointments->count()}}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+      
+              <div class="card bg-light col-md-6 col-lg-3" >
+                <div class="card-body">
+                  <i class="fa fa-building fa-2x" aria-hidden="true"></i>
+                  <h5 class="card-title">Department(s) {{$departments->count()}}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+      
+              <div class="card bg-light col-md-6 col-lg-3" >
+                <div class="card-body">
+                  <i class="fas fa-user-nurse fa-2x text-info"></i>
+                  <h5 class="card-title">Nurse(s)  {{$nurses->count()}}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
+  
 
-        
 
-        <div class="card bg-light col-md-6 col-lg-3" >
-          <div class="card-body">
-            <i class="fa fa-users fa-2x text-info" aria-hidden="true"></i>
-            <h5 class="card-title"> Users  {{$users->count()-1}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
         </div>
 
-        <div class="card bg-light col-md-6 col-lg-3" >
-          <div class="card-body">
-            <i class="fa fa-user-md fa-2x text-info" aria-hidden="true" ></i>
-            <h5 class="card-title">Doctor(s)   {{$doctors->count()}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-
-        <div class="card bg-light col-md-6 col-lg-3" >
-          <div class="card-body">
-            <i class="fa fa-users fa-2x text-success" aria-hidden="true"></i>
-            <h5 class="card-title"> Patient(s)  {{$patients->count()}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-
-        <div class="card bg-light col-md-6 col-lg-3" >
-          <div class="card-body">
-            <i class="fas fa-calendar-alt fa-2x text-warning" aria-hidden="true"></i>
-            <h5 class="card-title">Appointment(s)  {{$appointments->count()}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-
-        <div class="card bg-light col-md-6 col-lg-3" >
-          <div class="card-body">
-            <i class="fa fa-building fa-2x" aria-hidden="true"></i>
-            <h5 class="card-title">Department(s) {{$departments->count()}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-
-        <div class="card bg-light col-md-6 col-lg-3" >
-          <div class="card-body">
-            <i class="fas fa-user-nurse fa-2x text-info"></i>
-            <h5 class="card-title">Nurse(s)  {{$nurses->count()}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-        </div>
-
+       
 
 @endsection
 

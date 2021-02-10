@@ -39,7 +39,7 @@ class RegisterController extends Controller
     $user = $this->userRepository->create($request->all());
 
   
-    return redirect('/login')->withErrors(['status' => 'patient record successfully']);
+    return redirect('/login')->withErrors(['status' => 'You have Succesfully Registered, login to continue']);
     // dd('withErrors');
   }
 

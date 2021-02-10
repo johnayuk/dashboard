@@ -6,7 +6,11 @@ use App\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Validator,Redirect,Response,Session;
+
 
 
 class LoginController extends Controller
@@ -31,23 +35,58 @@ class LoginController extends Controller
      */
     // protected $redirectTo = RouteServiceProvider::HOME;
 
-    public function redirectTo(){
-        $user = Auth::user();
+       public function index()
+       {
+           return view('auth.login');
+       }
 
-        if(Auth::user()->role == 'Admin'){
-               return ('adminPage');
-        }
-        else{
-               return ('profile');
-        }
+
+
+    public function login(Request $request)
+    {
+         
+
+        $user = Auth::user();
+            
+          request()->validate([
+              'email'=>'required',
+              'password'=>'required',
+          ]);
+
+          $credentails = $request->only('email','password');
+
+        if(Auth::attempt($credentails)){
+
+             if (Auth::user()->role == 'admin') {
+               return redirect()->intended ('/adminPage');
+
+             }elseif(Auth::user()->role == 'doctor') {
+                   return redirect()->intended ('profilePage');
+
+             }elseif (Auth::user()->role == 'user') {
+                return redirect()->intended ('homepage');
+             }
+
+        }else {
+              return redirect('login')->withErrors('Please you have to register');
+         }
+        
     }
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    // public function __construct()
+    // {
+    //     $this->middleware('guest')->except('logout');
+    // }
+
+    public function logout(Request $request)
     {
-        $this->middleware('guest')->except('logout');
+        // Session::flush();
+        $request->session()->flush();
+        Auth::logout();
+        return Redirect('/');
     }
 }

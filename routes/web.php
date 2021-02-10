@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Patient;
 use App\Models\Doctor;
@@ -20,16 +21,38 @@ use App\Models\AboutUs;
 |
 */
 
+// Route::group(['middleware' => ['login']], function () {
+
+Route::get('login' ,'Auth\LoginController@index');
+Route::post('postLogin','Auth\LoginController@login');
+Route::get('logout','Auth\LoginController@logout');
+
+// });
+
+
+
 Route::get('/', function () {
+    return view('welcome');
+});
+
+
+Route::get('/homepage', function () {
     $doctors = Doctor::all();
     $about = AboutUs::all();
-    return view('welcome',compact('doctors','about'));
+    return view('homepage',compact('doctors','about'));
 });
 
 Route::get('/blog','BlogController@index');
+Route::get('/contact','BlogController@contact');
 
-Auth::routes(['register'=>false]);
 
+Route::get('/profilePage', function () {
+    return view('profilePage');
+});
+
+
+
+Route::post('/sendMail','SendEmailController@sendMail');
 Route::put('/createAppointment','AppointmentController@createAppointment');
 Route::put('/updateAppointment/{id}','AppointmentController@updateAppointment');
 Route::delete('/deleteAppointment/{id}','AppointmentController@deleteAppointment');
@@ -39,18 +62,6 @@ Route::get('/register', 'RegisterController@index')->name('register');
 Route::put('/create', 'RegisterController@create')->name('create');
 
 
-// Route::get('/view_bookings', function () {
-//     $user = Auth::user();
-//     $appointments = Appointment::all();
-//     return view('bookAppointment')->with('appointments',$appointments);
-// });
-
-
-
-
-
-Route::get('/profile', 'HomeController@index')->name('profile');
-// Route::get('/view_bookings', 'Appointment\AppointmentController@index')->name('view_bookings');
 
 
 Route::get('/view_bookings', function () {
@@ -60,8 +71,7 @@ Route::get('/view_bookings', function () {
     if(Auth::user()->role=="admin"){
     return view('bookAppointment',compact('appointments','doctors'));
     }
-    return view('bookAppointment',([ 'appointments' => $user->appointments, ]))
-    ->with('doctors',$doctors);
+   return redirect('homepage');
 });
 
 
@@ -98,7 +108,8 @@ Route::group(['middleware'=>['auth','admin']], function () {
 
     Route::get('/user_patient', function () {
         $patients = Patient::with(['doctor'])->get();
-        $doctors = Doctor::with(['patients'])->get();
+        // $doctors = Doctor::with(['patients'])->get();
+        $doctors = Doctor::all();
         return view('admin.patientdeck',compact('patients','doctors'));
     });
 
@@ -114,9 +125,6 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::put('/updateAbout/{id}','AboutUsController@updateAbout');
 
 
-    // $about = AboutUs::all();
-
-    // return view('/aboutUs',compact('about'));
 
 
     Route::get('/aboutUs', function () {

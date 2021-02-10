@@ -27,6 +27,37 @@
                         </div>
 
 
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('lastName') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="form-control @error('lastName') is-invalid @enderror" name="lastName"  required  autofocus>
+
+                                @error('lastName')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <input id="dateEmployed" type="hidden" value="none" class="form-control @error('dateEmployed') is-invalid @enderror" name="dateEmployed">
+
+                                @error('dateEmployed')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+
+
                         <div class="form-group row">
                             <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
@@ -41,6 +72,19 @@
                             </div>
                         </div>
 
+
+
+                        <div class="form-group row">
+                            <div class="col-md-6">
+                                <input id="specialization" type="hidden" value="none" class="form-control @error('specialization') is-invalid @enderror" name="specialization">
+
+                                @error('specialization')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
 
 
                         <div class="form-group row">
@@ -59,12 +103,25 @@
 
 
                         <div class="form-group row">
-                          
-
                             <div class="col-md-6">
                                 <input id="email" type="hidden" value="user" class="form-control @error('email') is-invalid @enderror" name="role">
 
                                 @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="text" class="form-control @error('address') is-invalid @enderror" name="address"  required >
+
+                                @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

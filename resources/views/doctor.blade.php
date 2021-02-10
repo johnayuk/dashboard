@@ -37,7 +37,7 @@
                 <div class="card-body">
                   <div class="table-responsive">
                     
-                    <table class="table">
+                    <table id="myTable" class="table">
                       <thead class=" text-primary">
                         <th>Name</th>
                         {{-- <th>LastName</th> --}}
@@ -181,44 +181,22 @@
                   <form method="POST"  enctype="multipart/form-data" files=true action="{{ url('/createDoctor') }}">
                           @csrf
                           @method('PUT')
+                      
                         {{-- <div class="form-group">
-                          <label for="_name">FirstName</label>
-                          <input for="name" type="text" name="first_name" class="form-control"  required>
-                        </div> --}}
-
-                        {{-- <div class="form-group">
-                          <label for="last_name">LastName</label>
-                          <input for="last_name" type="text" name="last_name" class="form-control"  required>
-                        </div> --}}
-
-                        {{-- <div class="form-group">
-                          <label for="patient_condition">Email</label>
-                          <input id="patient_condition" value="$doctor->user->email" type="email" name="email" class="form-control"  required>
-                        </div> --}}
-
-                        {{-- <div class="form-group">
-                          <label for="patient_condition">Password</label>
-                          <input id="patient_condition" value="$doctor->user->email" type="password" name="password" class="form-control"  required>
+                          <label for="patient_ward">Specialization</label>
+                          <input  type="text" name="specialization" class="form-control"  required>
                         </div> --}}
 
                         <div class="form-group">
-                          <label for="patient_ward">Specialization</label>
-                          <input  type="text" name="specialization" class="form-control"  required>
-                        </div>
+                          <label for="_specialization">Specialization</label>
+                          <select class="form-control" id="Select" name="specialization" required>
+                              <option value="surgry" selected>Surgry</option>
+                              <option value="dentist">Dentist</option>
+                              <option value="optician">Optician</option>
+                          </select>
+                      </div>
 
-                       
-                        {{-- <div class="file-group mt-2" >
-                            <label for="file-upload" class="custom-file-upload">choose file</label>
-                            <input id="file-upload" value="$doctor->user->image" type="file" name="image"  id="image"/>
-                        </div> --}}
-
-                    {{-- <label for="file-upload" class="custom-file-upload">
-                      Custom Upload
-                  </label>
-                  <input id="file-upload" type="file"/> --}}
-
-                   
-
+                    
                     <div class="input-group mb-3">  
                    <label class="input-group-text" for="doctor_id">Department</label>
                     <select class="custom-select" id="department_id" name="department_id">
@@ -232,7 +210,7 @@
                     <label class="input-group-text" for="doctor_id">select doctor if user</label>
                      <select class="custom-select" id="user_id" name="user_id">
                        @foreach ($users as $user)
-                       <option value="{{ $user->id}}"> {{$user->name}} </option>
+                       <option value="{{ $user->id }}"> {{$user->name}}  ({{$user->role}})</option>
                        @endforeach 
                      </select>
                    </div>
@@ -251,18 +229,12 @@
 
 
 @section('script')
-<!--   Core JS Files   -->
-<script src="../assets/js/core/jquery.min.js"></script>
-  <script src="../assets/js/core/popper.min.js"></script>
-  <script src="../assets/js/core/bootstrap.min.js"></script>
-  <script src="../assets/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-  <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-  <!-- Chart JS -->
-  <script src="../assets/js/plugins/chartjs.min.js"></script>
-  <!--  Notifications Plugin    -->
-  <script src="../assets/js/plugins/bootstrap-notify.js"></script>
-  <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="../assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
-  <script src="../assets/demo/demo.js"></script>
+
+  <script>
+      $(document).ready( function () {
+          $('#myTable').DataTable();
+      } );
+
+  </script>
+
 @endsection

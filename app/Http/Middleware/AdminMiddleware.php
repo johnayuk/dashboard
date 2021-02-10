@@ -17,14 +17,15 @@ class AdminMiddleware
     public function handle($request, Closure $next)
     {
 
-        if(Auth::user()->name == 'Admin'){
+        if(Auth::user()->role == 'admin' || Auth::user()->role == 'superadmin'){
 
             return $next($request);
 
         }else{
 
-           return redirect('/')->with('status','you are not allow to view this page');
+           return redirect('/')->withErrors('you are not allow to view the AdminPage');
         }
+
 
         
     }
