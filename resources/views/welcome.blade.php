@@ -108,9 +108,10 @@
                    <button type="button" class="btn btn-dark btn-lg"><a href="{{ url('login') }}">Login</a></button>
                 </div>
 
-              
-
-               
+              <br>
+                <strong> Admin:email is test@test.com </strong>
+                <strong> Admin:password is (password) </strong>
+                NB:: this is for testing
             </div>
         </div>
     </body>
