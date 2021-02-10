@@ -118,8 +118,8 @@ Registered Roles
                                 </div>
                                   </div>
                                   <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#exampleModal{{$user->id}}">Edit</button>
-
                     </td>
+
                     <td>
                       <div class="modal fade" id="staticBackdrop{{$user->id}}" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -177,26 +177,49 @@ Registered Roles
                                 <label for="_name">Name</label>
                                 <input for="name" type="text" name="name" class="form-control"  required>
                               </div>
+
+                              <div class="form-group">
+                                <label for="phone">lastName</label>
+                                <input for="lastName" type="text" name="lastName" class="form-control"  required>
+                              </div>
       
                               <div class="form-group">
                                 <label for="last_name">Phone</label>
                                 <input for="last_name" type="text" name="phone" class="form-control"  required>
                               </div>
       
-
                               <div class="form-group">
                                 <label for="phone">Email</label>
                                 <input for="phone" type="text" name="email" class="form-control"  required>
                               </div>
 
-                                <div class="form-group">
+                              <div class="form-group">
+                                <label for="dateEmployed">Employed</label>
+                                <input for="dateEmployed" type="text" name="dateEmployed" class="form-control"  required>
+                              </div>
+
+                              <div class="form-group">
+                                <label for="_specialization">Role</label>
+                                <select class="form-control" id="Select" name="specialization" required>
+                                    <option value="Dentist" selected>Dentist</option>
+                                    <option value="Optician">Optician</option>
+                                    <option value="Gynocologist">Gynocologist</option>
+                                    <option value="Pydiatrist">Pydiatrist</option>
+                                    <option value="None">None</option>
+                                </select>
+                            </div>
+
+                              <div class="form-group">
+                                <label for="address">Address</label>
+                                <input for="address" type="text" name="address" class="form-control"  required>
+                              </div>
+
+                              <div class="form-group">
                                 <label for="phone">Password</label>
                                 <input for="password" type="text" name="password" class="form-control"  required>
                               </div>
 
-                              
-
-                                <div class="form-group">
+                              <div class="form-group">
                                   <label for="_role">Role</label>
                                   <select class="form-control" id="Select" name="role">
                                       <option value="user" selected>User</option>
@@ -205,15 +228,17 @@ Registered Roles
                                   </select>
                               </div>
 
-                                <div class="form-group">
+                              <div class="form-group">
                                   <label class="contol-label">choose file</label>
                                   <input type="file" name="image" class="form-control" id="image">
-                          </div>
+                              </div>
       
                             </div>
+
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
+                            
                         </form>
                   </div>
                </div>

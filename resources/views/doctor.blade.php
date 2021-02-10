@@ -210,7 +210,7 @@
                     <label class="input-group-text" for="doctor_id">select doctor if user</label>
                      <select class="custom-select" id="user_id" name="user_id">
                        @foreach ($users as $user)
-                       <option value="{{ $user->id }}"> {{$user->name}}  ({{$user->role}})</option>
+                       <option value="{{ $user->id }}"> {{$user->name}}  ({{$user->role}}) ({{$user->specialization}})</option>
                        @endforeach 
                      </select>
                    </div>

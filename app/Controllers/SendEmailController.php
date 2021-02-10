@@ -28,6 +28,6 @@ class SendEmailController extends Controller
          Mail::to('john1234ayuk@gmail.com')->send(new ContactMail($data));
 
 
-         return redirect()
+         return redirect('/homepage')->with('success', 'Thank you for contacting us');
     }
 }

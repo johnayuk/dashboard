@@ -20,25 +20,21 @@
 
                         <div class="collapse navbar-collapse main-menu-item justify-content-center"
                             id="navbarSupportedContent">
-                            <ul class="navbar-nav align-items-center">
+                            <ul class="navbar-nav ml-auto">
                                
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/blog">about</a>
+                                    <a class="nav-link" href="/#">about</a>
                                 </li>
+
                                 <li class="nav-item">
-                                  
                                     <a class="nav-link" href="{{url('logout')}}">Logout</a>
                                 </li>
 
-                                
-                               
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/contact">Contact</a>
+                                <li class="nav-item mt-3">
+                                    <a class="btn_2 d-none d-lg-block ml-auto" href="#">HOT LINE- +234 968101568</a>
                                 </li>
                             </ul>
                         </div>
-                        <a class="btn_2 d-none d-lg-block" href="#">HOT LINE- +234 968101568</a>
                     </nav>
                 </div>
             </div>
@@ -358,14 +354,14 @@
             </div>
             <div class="col-lg-8">
 
-               @if ($message Session::get('success'))
+               @if ($message = Session::get('success'))
                <div class="alert alert-primary alert-dismissible fade show" role="alert">
                
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
 
-                    <strong>{{&message}}</strong>
+                    <strong>{{$message}}</strong>
                </div> 
                @endif
                 <form action="/sendMail" method="POST">

@@ -1,4 +1,4 @@
-
+{{-- 
 @extends('layouts.welcomeapp')
 
 @section('content')
@@ -21,9 +21,7 @@
 
 
                       <ul class="navbar-nav ml-auto">
-                        <!-- <li class="nav-item active">
-                            <a class="nav-link" href="index.html">Home</a>
-                        </li> -->
+                     
                         <li class="nav-item">
                           <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
@@ -34,12 +32,12 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf
                             </form>
-                            {{-- <a class="nav-link" href="{{ url('login') }}"><h5 class="p-0 m-0 ml-5" style="Color:#0080ff; margin:0%;">Login or Register</h5></a> --}}
+                          
                         </li>
                       
                      
                   </div>
-                  {{-- <a class="btn_2 d-none d-lg-block"  href="#">HOT LINE- 09856</a> --}}
+                 
               </nav>
           </div>
       </div>
@@ -161,4 +159,4 @@
   </div>
 </section>
 
-@endsection
+@endsection --}}
