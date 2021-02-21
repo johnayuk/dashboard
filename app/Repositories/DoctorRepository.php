@@ -12,11 +12,11 @@ class DoctorRepository
     {
 
         $doctor = new Doctor();
-        // $doctor->first_name = $request['first_name'];
-        // $doctor->last_name = $request['last_name'];
-        // $doctor->email = $request['email'];
+        $doctor->age= $request['age'];
+        $doctor->salary = $request['salary'];
+        $doctor->address = $request['address'];
         $doctor->specialization = $request['specialization'];
-        // $doctor->password = $request['password'];
+        $doctor->dateEmployed = $request['dateEmployed'];
         $doctor->department_id = $request['department_id'];
         $doctor->user_id = $request['user_id'];
 
@@ -26,7 +26,7 @@ class DoctorRepository
         //            $image = $request['image'];
         //            $extension = $image->getClientOriginalExtension();
         //             $filename = time().'.'.$extension;
-        //             $image->move('uploads/image/doctor',$filename);
+        //             $image->move('uploads/image/doctor/',$filename);
         //             $doctor->image = $filename;
             
         //         }else{
@@ -47,17 +47,17 @@ class DoctorRepository
     // $where = array('id' => $doctorId);
     $doctor = Doctor::where('id',$id)->first();
 
-    if (request('image'))
-    {
-        $image = request('image');
-        $extension = $image->getClientOriginalExtension();
-         $filename = time().'.'.$extension;
-         $image->move('uploads/image/doctor',$filename);
-         $doctor['image'] = "$filename";
-    }
-    $doctor->first_name = request('first_name');
-    $doctor->last_name = request('last_name');
-    $doctor->email = request('email');
+    // if (request('image'))
+    // {
+    //     $image = request('image');
+    //     $extension = $image->getClientOriginalExtension();
+    //      $filename = time().'.'.$extension;
+    //      $image->move('uploads/image/doctor',$filename);
+    //      $doctor['image'] = "$filename";
+    // }
+    $doctor->age = request('age');
+    $doctor->salary = request('salary');
+    $doctor->address = request('address');
     $doctor->specialization = request('specialization');
     $doctor->department_id = request('department_id');
 

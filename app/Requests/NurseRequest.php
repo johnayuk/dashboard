@@ -25,22 +25,24 @@ class NurseRequest extends FormRequest
     {
         return [
             // "id"=>"required|exist:students.id",
-            "first_name"=>"required",
-            "last_name"=>"required",
-            "email"=>"required|unique:users",
+            // "first_name"=>"required",
+            // "last_name"=>"required",
+            // "email"=>"required|unique:users",
             "department_id"=>"required",
-            "image"=>"mimes:jpeg,jpg,png,gif|required|max:10000",
+            "user_id"=>"required",
+            // "image"=>"mimes:jpeg,jpg,png,gif|required|max:10000",
         ];
     }
 
 
     public function messages(){
         return [
-            "first_name.required" => 'Name is required!',
-            "last_name.required" => 'last_name is required!',
-            "email.required" => 'specialization is required!',
+            // "first_name.required" => 'Name is required!',
+            // "last_name.required" => 'last_name is required!',
+            // "email.required" => 'specialization is required!',
             "department_id.required" => 'department_id is required!',
-            "image.required" => 'is required! and must be an image'
+            "user_id"=>"required",
+            // "image.required" => 'is required! and must be an image'
         ];
     }
 }

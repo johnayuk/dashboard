@@ -15,14 +15,11 @@ class Userseeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'name' => 'Admin',
-            'lastName'=>'Admin',
+            'role'=> 'admin',
+            'firstName' => 'Jano',
+            'lastName'=>'Banos',
             'email' => 'test@test.com',
             'phone' =>'12345',
-            'specialization'=>'administration',
-            'role'=> 'admin',
-            'address'=>'LLt',
-            'dateEmployed'=>'22jan',
             'image'=>'128874.jpg',
             'password' => Hash::make('password'),
         ]);

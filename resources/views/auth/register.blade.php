@@ -12,13 +12,17 @@
                         @csrf
                        @method('PUT')
 
+                       <div class="form-group row">
+                         <input type="hidden" name="role" value="user">
+                    </div>
+
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">FirstName</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name"  required  autofocus>
+                                <input id="firstName" type="text" class="form-control @error('firstName') is-invalid @enderror" name="firstName"  required  autofocus>
 
-                                @error('name')
+                                @error('firstName')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -29,7 +33,7 @@
 
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('lastName') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">LastName</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control @error('lastName') is-invalid @enderror" name="lastName"  required  autofocus>
@@ -41,52 +45,7 @@
                                 @enderror
                             </div>
                         </div>
-
-
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <input id="dateEmployed" type="hidden" value="none" class="form-control @error('dateEmployed') is-invalid @enderror" name="dateEmployed">
-
-                                @error('dateEmployed')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-
-
-                        <div class="form-group row">
-                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required  autofocus>
-
-                                @error('phone')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-
-                        <div class="form-group row">
-                            <div class="col-md-6">
-                                <input id="specialization" type="hidden" value="none" class="form-control @error('specialization') is-invalid @enderror" name="specialization">
-
-                                @error('specialization')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
+                     
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
@@ -101,35 +60,20 @@
                             </div>
                         </div>
 
-
                         <div class="form-group row">
-                            <div class="col-md-6">
-                                <input id="email" type="hidden" value="user" class="form-control @error('email') is-invalid @enderror" name="role">
+                            <label for="phone" class="col-md-4 col-form-label text-md-right">{{ __('Phone') }}</label>
 
-                                @error('email')
+                            <div class="col-md-6">
+                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required  autofocus>
+
+                                @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
-
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="text" class="form-control @error('address') is-invalid @enderror" name="address"  required >
-
-                                @error('address')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
+                                                       
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
@@ -152,10 +96,10 @@
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label class="contol-label">choose file</label>
-                            <input type="file" name="image" class="form-control" id="image">
-                    </div>
+                        <div class="file-group mt-2" >
+                            <label for="file-upload" class="custom-file-upload">upload picture</label>
+                            <input id="file-upload" type="file" name="image"  id="image"/>
+                          </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

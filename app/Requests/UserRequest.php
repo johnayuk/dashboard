@@ -25,22 +25,24 @@ class UserRequest extends FormRequest
     {
         return [
             // "id"=>"required|exist:students.id",
-            "name"=>"required",
+            "firstName"=>"required",
+            "lastName"=>"required",
             "phone"=>"required",
-            "role"=>"required",
+            // "role"=>"required",
             "email"=>"required|unique:users",
-            "image"=>"mimes:jpeg,jpg,png,gif|required|max:10000",
+            // "image"=>"mimes:jpeg,jpg,png,gif|required|max:10000",
             "password"=>"required",
         ];
     }
 
     public function messages(){
         return [
-            "name.required" => 'Name is required!',
+            "firstName.required" => 'Name  required!',
+            "lastName.required" => 'Name  required!',
             "phone.required" => 'Phone is required!',
-            "role.required" => 'Role is required!',
+            // "role.required" => 'Role is required!',
             "email.required" => ' Email required!',
-            "image.required" => 'image is required! and must be an image',
+            // "image.required" => 'image is required! and must be an image',
             "password.required" => 'Password is required! '
         ];
     }

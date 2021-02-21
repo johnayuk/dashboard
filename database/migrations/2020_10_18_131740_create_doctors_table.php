@@ -16,11 +16,10 @@ class CreateDoctorsTable extends Migration
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            // $table->string('first_name');
-            // $table->string('last_name');
-            // $table->string('image');
-            // $table->string('email')->unique();
-            // $table->string('password');
+            $table->string('address');
+            $table->string('dateEmployed');
+            $table->string('salary');
+            $table->string('age');
             $table->string('specialization');
             $table->unsignedBigInteger('department_id');
 

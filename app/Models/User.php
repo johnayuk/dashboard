@@ -69,6 +69,11 @@ class User extends Authenticatable
       return $this->hasMany('App\Models\Doctor');
     }
 
+    public function admins()
+    {
+      return $this->hasMany('App\Models\Admin');
+    }
+
 
     // public function getPostsCountAttribute(){
     //     return $this->appointment()->count();

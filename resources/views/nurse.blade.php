@@ -49,12 +49,12 @@
                       <tbody>
                         @foreach ($nurses as $nurse)
                          <tr>
-                         <td>{{ $nurse->first_name}}</td>
-                         <td>{{ $nurse->last_name}}</td>
-                         <td>{{ $nurse->email}}</td>
+                         <td>{{ $nurse->user->firstName}}</td>
+                         <td>{{ $nurse->user->lastName}}</td>
+                         <td>{{ $nurse->user->email}}</td>
                          <td>{{ $nurse->department->name}}</td>
                          {{-- <td><img src="{{asset('uploads/image/'.$doctor->image)}}" alt="" width="60px"; height="60px" style="border-radius: 60px"></td> --}}
-                         <td><img src="{{asset('uploads/image/nurse/'.$nurse->image)}}" alt="" width="60px"; height="60px" style="border-radius: 60px"></td>
+                         <td><img src="{{asset('uploads/image/'.$nurse->user->image)}}" alt="" width="60px"; height="60px" style="border-radius: 60px"></td>
 
                          <td><div class="modal fade" id="exampleModal{{$nurse->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
@@ -159,7 +159,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="addDoctor">Add Doctor</h5>
+          <h5 class="modal-title" id="addDoctor">Add Nurse</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -168,42 +168,29 @@
                   <form method="POST"  enctype="multipart/form-data" files=true action="{{ url('/createNurse') }}">
                           @csrf
                           @method('PUT')
-                        <div class="form-group">
-                          <label for="_name">FirstName</label>
-                          <input for="name" type="text" name="first_name" class="form-control"  required>
-                        </div>
 
-                        <div class="form-group">
-                          <label for="last_name">LastName</label>
-                          <input for="last_name" type="text" name="last_name" class="form-control"  required>
-                        </div>
+                          <div class="input-group mb-3">  
+                            <label class="input-group-text" for="doctor_id">select Nurse if user</label>
+                             <select class="custom-select" id="user_id" name="user_id">
+                               @foreach ($users as $user)
+                               <option value="{{ $user->id }}"> {{$user->fisrtName}} {{$user->lastName}}   ({{$user->role}})</option>
+                               @endforeach 
+                             </select>
+                           </div>
 
-                        <div class="form-group">
-                          <label for="patient_condition">Email</label>
-                          <input id="patient_condition" type="text" name="email" class="form-control"  required>
-                        </div>
+                          <div class="input-group mb-3">  
+                          <label class="input-group-text" for="doctor_id">Department</label>
+                            <select class="custom-select" id="department_id" name="department_id">
+                              @foreach ($departments as $department)
+                              <option value="{{ $department->id}}"> {{$department->name}} </option>
+                              @endforeach 
+                            </select>
+                          </div>
 
-                       
-                        <div class="file-group mt-2" >
+                          {{-- <div class="file-group mt-2" >
                             <label for="file-upload" class="custom-file-upload">choose file</label>
                             <input id="file-upload" type="file" name="image"  id="image"/>
-                        </div>
-
-                    {{-- <label for="file-upload" class="custom-file-upload">
-                      Custom Upload
-                  </label>
-                  <input id="file-upload" type="file"/> --}}
-
-                   
-
-                    <div class="input-group mb-3">  
-                   <label class="input-group-text" for="doctor_id">Department</label>
-                    <select class="custom-select" id="department_id" name="department_id">
-                      @foreach ($departments as $department)
-                      <option value="{{ $department->id}}"> {{$department->name}} </option>
-                      @endforeach 
-                    </select>
-                  </div>
+                        </div> --}}
 
                       </div>
                       <div class="modal-footer">

@@ -1,5 +1,6 @@
 <?php
 
+use App\AdminModel as AppAdminModel;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -9,6 +10,7 @@ use App\Models\Appointment;
 use App\Models\Department;
 use App\Models\Nurse;
 use App\Models\AboutUs;
+use App\Models\Admin;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +29,8 @@ Route::get('login' ,'Auth\LoginController@index');
 Route::post('postLogin','Auth\LoginController@login');
 Route::get('logout','Auth\LoginController@logout');
 
+Route::get('/register', 'RegisterController@index')->name('register');
+Route::put('/create', 'RegisterController@create')->name('create');
 // });
 
 
@@ -53,15 +57,13 @@ Route::get('/profilePage', function () {
 
 
 Route::post('/sendMail','SendEmailController@sendMail');
+Route::post('/workersMail/{id}','SendEmailController@workersMail');
+
+
+
 Route::put('/createAppointment','AppointmentController@createAppointment');
 Route::put('/updateAppointment/{id}','AppointmentController@updateAppointment');
 Route::delete('/deleteAppointment/{id}','AppointmentController@deleteAppointment');
-
-
-Route::get('/register', 'RegisterController@index')->name('register');
-Route::put('/create', 'RegisterController@create')->name('create');
-
-
 
 
 Route::get('/view_bookings', function () {
@@ -73,6 +75,23 @@ Route::get('/view_bookings', function () {
     }
    return redirect('homepage');
 });
+
+
+Route::get('/user_patient', function () {
+    $patients = Patient::with(['doctor'])->get();
+    // $doctors = Doctor::with(['patients'])->get();
+    $doctors = Doctor::all();
+    return view('admin.patientdeck',compact('patients','doctors'));
+});
+
+// Route::get('/patientpdf', function () {
+    
+//     return view('patientpdf');
+// });
+
+// Route::get('/downloadPDF/{id}','PdfController@downloadPDF');
+
+Route::get('/patientpdf/{id}','PdfController@downloadPDF');
 
 
 Route::group(['middleware'=>['auth','admin']], function () {
@@ -103,15 +122,16 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::get('/nurse', function () {
         $nurses = Nurse::all();
         $departments = Department::with(['doctors'])->get();
-        return view('nurse',compact('nurses','departments'));
+        $users = User::all();
+        return view('nurse',compact('nurses','departments','users'));
     });
 
-    Route::get('/user_patient', function () {
-        $patients = Patient::with(['doctor'])->get();
-        // $doctors = Doctor::with(['patients'])->get();
-        $doctors = Doctor::all();
-        return view('admin.patientdeck',compact('patients','doctors'));
-    });
+    // Route::get('/user_patient', function () {
+    //     $patients = Patient::with(['doctor'])->get();
+    //     // $doctors = Doctor::with(['patients'])->get();
+    //     $doctors = Doctor::all();
+    //     return view('admin.patientdeck',compact('patients','doctors'));
+    // });
 
     Route::get('/doctor', function () {
         $doctors = Doctor::with(['department'])->get();
@@ -127,10 +147,16 @@ Route::group(['middleware'=>['auth','admin']], function () {
 
 
 
-    Route::get('/aboutUs', function () {
-        $about = AboutUs::all();
+    // Route::get('/aboutUs', function () {
+    //     $about = AboutUs::all();
 
-        return view('/aboutUs')->with('about',$about);
+    //     return view('/aboutUs')->with('about',$about);
+    // });
+
+    Route::get('/admin', function () {
+        $admins = Admin::all();
+        $users = User::all();
+        return view('/admin.admin',compact('admins','users'));
     });
 
 
@@ -148,6 +174,10 @@ Route::group(['middleware'=>['auth','admin']], function () {
     Route::put('/createDoctor', 'DoctorController@createDoctor');
     Route::put('/updateDoctor/{id}','DoctorController@updateDoctor');
     Route::delete('/deleteDoctor/{id}','DoctorController@deleteDoctor');
+
+    Route::put('/createAdmin', 'AdminController@createAdmin');
+    Route::put('/updateAdmin/{id}','AdminController@updateAdmin');
+    Route::delete('/deleteAdmin/{id}','AdminController@deleteAdmin');
 
     Route::put('/updateNurse/{id}', 'NurseController@updateNurse');
     Route::delete('/deleteNurse/{id}','NurseController@deleteNurse');

@@ -32,4 +32,11 @@ class ContactMail extends Mailable
     {
         return $this->markdown('emails.contact.contactForm');
     }
+
+    // $doctor = Doctor::where('id',$id)->first();
+
+    // // Ship order...
+    
+
+    // Mail::to($doctor->user->email)->send(new Workers($doctor));
 }

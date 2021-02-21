@@ -25,7 +25,8 @@ class updateUserRequest extends FormRequest
     {
         return [
             // "id"=>"required|exist:students.id",
-            "name"=>"required",
+            "firstName"=>"required",
+            "lastName"=>"required",
             "phone"=>"required",
             "role"=>"required",
             "email"=>"required",
@@ -35,7 +36,8 @@ class updateUserRequest extends FormRequest
 
     public function messages(){
         return [
-            "name.required" => 'Name is required!',
+            "firstName.required" => 'FirstName is required!',
+            "lastName.required" => 'LastName is required!',
             "phone.required" => 'Phone is required!',
             "role.required" => 'Role is required!',
             "email.required" => ' Email required!',

@@ -14,14 +14,11 @@ class UserRepository{
     {
 
         $user = new User();
-        $user->name = $request['name'];
+        $user->firstName = $request['firstName'];
         $user->lastName = $request['lastName'];
         $user->email = $request['email'];
         $user->role = $request['role'];
         $user->phone = $request['phone'];
-        $user->specialization = $request['specialization'];
-        $user->address = $request['address'];
-        $user->dateEmployed= $request['dateEmployed'];
         $user->password = $request['password'];
 
         if ($request['image']){
@@ -64,11 +61,11 @@ class UserRepository{
          $image->move('uploads/image',$filename);
          $user['image'] = "$filename";
     }
-    $user->name = request('name');
+    $user->firstName = request('firstName');
     $user->email = request('email');
     $user->role = request('role');
     $user->phone= request('phone');
-
+// dd($user);
     $user->save();
     return  $user;
 

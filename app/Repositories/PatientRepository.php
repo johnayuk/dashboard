@@ -15,6 +15,12 @@ class PatientRepository{
         $patient->condition = $request['condition'];
         $patient->doctor_id = $request['doctor_id'];
         $patient->ward = $request['ward'];
+        $patient->previous_med_record = $request['previous_med_record'];
+        $patient->family_med_record = $request['family_med_record'];
+        $patient->overall_physical_status= $request['overall_physical_status'];
+        $patient->next_of_kin= $request['next_of_kin'];
+        $patient->x_ray= $request['x_ray'];
+        $patient->address= $request['address'];
         $patient->phone = $request['phone'];
 
         $patient->save();

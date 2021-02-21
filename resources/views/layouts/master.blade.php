@@ -23,7 +23,7 @@
   <link rel="icon" href="uploads/medicine.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    @yield('title')
+  GoodHealth
   </title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -43,14 +43,29 @@
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
       <div class="logo">
-        <a href="/adminPage"  class="simple-text logo-normal">
-          welcome {{ Auth::user()->name }}
-          <img src="{{asset('uploads/image/'.Auth::user()->image)}}"  width="30px"; height="30px" style="border-radius: 60px" alt="">
+        <a href="/adminPage"  >
+          welcome {{ Auth::user()->firstName }}
+          <img class="avatar border-gray"  src="{{asset('uploads/image/'.Auth::user()->image)}}"  width="50px"; height="50px" style="border-radius: 60px" alt="">
         </a>
       </div>
 
       <div class="sidebar-wrapper" id="sidebar-wrapper">
         <ul class="nav">
+
+          @if(Auth::check() && Auth::user()->role  == "admin")
+          <div class="dropdown">
+            <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Dropdown button
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="./doctor">Doctors</a>
+              <a class="dropdown-item" href="/nurse">Nusers</a>
+              <a class="dropdown-item" href="admin">Admins</a>
+              <a class="dropdown-item" href="#">Technicians</a>
+            </div>
+          </div>
+          @endif
+
 
           @if(Auth::check() && Auth::user()->role  == "admin")
           <li>
@@ -73,14 +88,14 @@
           </li>
           @endif
 
-          @if(Auth::check() && Auth::user()->role  == "admin")
+          {{-- @if(Auth::check() && Auth::user()->role  == "admin") --}}
           <li>
             <a href="./user_patient">
               <i class="education_atom"></i>
               <p>Patients ProFiles</p>
             </a>
           </li>
-            @endif
+            {{-- @endif --}}
 
             {{-- @if(Auth::check() && Auth::user()->role  == "admin") --}}
             <li>
@@ -90,21 +105,21 @@
             </li>
               {{-- @endif --}}
 
-           @if(Auth::check() && Auth::user()->role  == "admin")
+           {{-- @if(Auth::check() && Auth::user()->role  == "admin")
             <li>
               <a href="./doctor">
                 <p>Doctors</p>
               </a>
             </li>
-              @endif
-
+              @endif --}}
+{{-- 
            @if(Auth::check() && Auth::user()->role  == "admin")
             <li>
               <a href="./aboutUs">
                 <p>AboutUs</p>
               </a>
             </li>
-              @endif
+              @endif --}}
 
               <li>
                 <a href="./view_bookings">
@@ -121,14 +136,14 @@
           </li>
           @endif
 
-          @if(Auth::check() && Auth::user()->role  == "admin")
+          {{-- @if(Auth::check() && Auth::user()->role  == "admin")
           <li>
             <a href="/nurse">
              
               <p>Nurses</p>
             </a>
           </li>
-          @endif
+          @endif --}}
 
         </ul>
       </div>
@@ -251,6 +266,9 @@
   <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="../assets/js/now-ui-dashboard.min.js?v=1.5.0" type="text/javascript"></script><!-- Now Ui Dashboard DEMO methods, don't include it in your project! -->
   <script src="../assets/demo/demo.js"></script>
+  <script>
+    $('#myModal').modal(options)
+  </script>
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js

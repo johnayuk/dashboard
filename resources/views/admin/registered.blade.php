@@ -41,11 +41,12 @@ Registered Roles
                 <div class="table-responsive">
                   <table id="myTable" class="table">
                     <thead class=" text-primary">
-                      <th>Name</th>
                       <th>Role</th>
-                      <th>phone</th>
-                      <th>Image</th>
+                      <th>FirstName</th>
+                      <th>LastName</th>
                       <th>email</th>
+                      <th>phone</th>
+                      {{-- <th>Image</th> --}}
                       <th>Edit</th>
                       <th>Delete</th>
                     <thead class=" text-primary">
@@ -54,12 +55,12 @@ Registered Roles
                     <tbody>
                         @foreach ($users as $user)
                        <tr>
-                
-                       <td>{{$user->name}}</td>
-                       <td>{{$user->role}}</td>
+                        <td>{{$user->role}}</td>
+                       <td>{{$user->firstName}}</td>
+                       <td>{{$user->lastName}}</td>
+                       <td>{{$user->email}}</td>
                        <td>{{$user->phone}}</td>
                        <td><img src="{{asset('uploads/image/'.$user->image)}}" alt="" width="60px"; height="60px" style="border-radius: 60px"></td>
-                       <td>{{$user->email}}</td>
                     <td>
                     
 
@@ -77,10 +78,15 @@ Registered Roles
                                         @csrf
                                         @method('PUT')
 
-                                        <h3>Edit User : {{$user->name}}</h3>
+                                        <h3>Edit User : {{$user->firstName}}</h3>
                                         <div class="form-group">
-                                          <label for="name">Name</label>
-                                        <input type="text" name="name" id="name" value="{{$user->name}}" class="form-control">
+                                          <label for="name">FirstName</label>
+                                        <input type="text" name="firstName" id="name" value="{{$user->firstName}}" class="form-control">
+                                        </div>
+
+                                        <div class="form-group">
+                                          <label for="name">LastName</label>
+                                        <input type="text" name="lastName" id="name" value="{{$user->lastName}}" class="form-control">
                                         </div>
 
                                         <div class="form-group">
@@ -100,11 +106,9 @@ Registered Roles
                                           </div>
 
 
-                                        
-
                                         <div class="file-group mt-2" >
                                           <label for="file-upload" class="custom-file-upload">choose file</label>
-                                          <input id="file-upload" type="file" name="image"  id="image"/>
+                                        <input id="file-upload" type="file" value="{{$user->image}}" name="image"  id="image"/>
                                       </div>
 
 
@@ -173,9 +177,21 @@ Registered Roles
                         <form method="POST" enctype="multipart/form-data" files=true action="{{ url('/createUser') }}">
                                 @csrf
                                 @method('PUT')
+
+                                <div class="form-group">
+                                  <label for="_role">Role</label>
+                                  <select class="form-control" id="Select" name="role">
+                                      <option value="user" selected>User</option>
+                                      <option value="admin">Admin</option>
+                                      <option value="doctor">Doctor</option>
+                                      <option value="technician">Technician</option>
+                                      <option value="nurse">Nurse</option>
+                                  </select>
+                              </div>
+
                               <div class="form-group">
-                                <label for="_name">Name</label>
-                                <input for="name" type="text" name="name" class="form-control"  required>
+                                <label for="_name">Firstame</label>
+                                <input for="name" type="text" name="firstName" class="form-control"  required>
                               </div>
 
                               <div class="form-group">
@@ -191,48 +207,16 @@ Registered Roles
                               <div class="form-group">
                                 <label for="phone">Email</label>
                                 <input for="phone" type="text" name="email" class="form-control"  required>
-                              </div>
-
-                              <div class="form-group">
-                                <label for="dateEmployed">Employed</label>
-                                <input for="dateEmployed" type="text" name="dateEmployed" class="form-control"  required>
-                              </div>
-
-                              <div class="form-group">
-                                <label for="_specialization">Role</label>
-                                <select class="form-control" id="Select" name="specialization" required>
-                                    <option value="Dentist" selected>Dentist</option>
-                                    <option value="Optician">Optician</option>
-                                    <option value="Gynocologist">Gynocologist</option>
-                                    <option value="Pydiatrist">Pydiatrist</option>
-                                    <option value="None">None</option>
-                                </select>
-                            </div>
-
-                              <div class="form-group">
-                                <label for="address">Address</label>
-                                <input for="address" type="text" name="address" class="form-control"  required>
-                              </div>
+                              </div>                            
 
                               <div class="form-group">
                                 <label for="phone">Password</label>
                                 <input for="password" type="text" name="password" class="form-control"  required>
-                              </div>
+                              </div>                             
 
-                              <div class="form-group">
-                                  <label for="_role">Role</label>
-                                  <select class="form-control" id="Select" name="role">
-                                      <option value="user" selected>User</option>
-                                      <option value="admin">Admin</option>
-                                      <option value="doctor">Doctor</option>
-                                  </select>
-                              </div>
-
-                              <div class="form-group">
-                                  <label class="contol-label">choose file</label>
-                                  <input type="file" name="image" class="form-control" id="image">
-                              </div>
-      
+                              <div class="file-group " >
+                                <label for="file-upload" class="custom-file-upload">choose file</label>
+                                <input id="file-upload" type="file" name="image"  id="image"/>
                             </div>
 
                             <div class="modal-footer">
