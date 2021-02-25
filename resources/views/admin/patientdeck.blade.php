@@ -51,7 +51,7 @@ Patient Profiles
                       <th>Delete</th>
                       @endif 
 
-                      <th>View Patient Profile</th>
+                      <th>View Profile</th>
                       <th>Print PDF</th>  
 
                     <thead class=" text-primary">
@@ -62,7 +62,7 @@ Patient Profiles
                        <tr>
                       <td>{{$patient->name}}</td>
                       <td>{{$patient->last_name}}</td>
-                      <td> Doctor {{$patient->doctor->user->name}}</td> 
+                      <td> Doctor {{$patient->doctor->user->lastName}}</td> 
                                                            
                        @if (Auth::check() && Auth::user()->role == 'admin')
                       <td>
@@ -161,8 +161,8 @@ Patient Profiles
                       @endif
                       
                       <td>    
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter{{$patient->id}}">
-                                    View Patient Profile
+                                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter{{$patient->id}}">
+                                    View Profile
                                     </button>
                                     
                                     <!-- Modal -->
@@ -294,7 +294,7 @@ Patient Profiles
 
 
 
-                      <td><a class="btn " href="{{url('/patientpdf/'.$patient->id)}}">Print Pdf</a></td>
+                      <td><a class="btn btn-sm" href="{{url('/patientpdf/'.$patient->id)}}">Print Pdf</a></td>
 
                        </tr>
                        @endforeach
@@ -393,7 +393,7 @@ Patient Profiles
                         <label class="input-group-text" for="doctor_id">select doctor</label>
                          <select class="custom-select" id="doctor_id" name="doctor_id">
                            @foreach ($doctors as $doctor)
-                           <option value="{{ $doctor->id}}"> {{$doctor->user->name}} </option>
+                           <option value="{{ $doctor->id}}">Doctor {{$doctor->user->firstName}} {{$doctor->user->lastName}} </option>
                            @endforeach 
                          </select>
                        </div>

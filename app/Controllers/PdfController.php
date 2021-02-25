@@ -16,7 +16,7 @@ class PdfController extends Controller
         $patient= Patient::find($id);
 
         $data = App::make('dompdf.wrapper');
-        $data = PDF::loadView('patientpdf',compact('patient'));
+        $data = PDF::loadView('PDFs.patientpdf',compact('patient'));
 
         // return $data->download('disney.pdf');
 

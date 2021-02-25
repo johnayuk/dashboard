@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- <title>{{ config('app.name', 'Laravel') }}</title> --}}
-    <title>medical</title>
+    <title>GoodHealth</title>
     {{-- <link rel="icon" href="img/favicon.png"> --}}
   <link rel="icon" href="Uploads/medicine.png">
 

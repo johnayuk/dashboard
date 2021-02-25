@@ -59,6 +59,7 @@ Route::get('/profilePage', function () {
 Route::post('/sendMail','SendEmailController@sendMail');
 Route::post('/workersMail/{id}','SendEmailController@workersMail');
 
+Route::get('/patientpdf/{id}','PdfController@downloadPDF');
 
 
 Route::put('/createAppointment','AppointmentController@createAppointment');
@@ -72,6 +73,9 @@ Route::get('/view_bookings', function () {
     $appointments = Appointment::all();
     if(Auth::user()->role=="admin"){
     return view('bookAppointment',compact('appointments','doctors'));
+    }else {
+        $appointments = Appointment::where('id','doctor')->where('doctor_id',Auth::id());
+        return view('bookAppointment',compact('appointments','doctors'));
     }
    return redirect('homepage');
 });
@@ -91,7 +95,6 @@ Route::get('/user_patient', function () {
 
 // Route::get('/downloadPDF/{id}','PdfController@downloadPDF');
 
-Route::get('/patientpdf/{id}','PdfController@downloadPDF');
 
 
 Route::group(['middleware'=>['auth','admin']], function () {

@@ -36,6 +36,7 @@
                     
                     <table id="myTable" class="table">
                       <thead class=" text-primary">
+                        <th>Cancel or Approve Appointment</th>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Phone</th>
@@ -54,8 +55,8 @@
                          <td>{{ $appointment->phone}}</td>
                          <td>{{ $appointment->time}}</td>
                          <td>{{ $appointment->service}}</td>
-                         <td>{{ $appointment->user->name}}</td>
-                         <td>{{ $appointment->doctor->user->name}}</td>
+                         <td>{{ $appointment->user->firstName}}</td>
+                         <td>{{ $appointment->doctor->user->lastName}}</td>
                          <td><div class="modal fade" id="exampleModal{{ $appointment->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
                             <div class="modal-content">
@@ -201,7 +202,7 @@
                       <div class="form-group col-md-6">
                           <label for="_Service">Service</label>
                           <select class="form-control" id="Select" name="service">
-                              <option value="1" selected>Select service</option>
+                              <option  selected>Select service</option>
                               <option value="Eye Care">Eye Care</option>
                               <option value="Maternity">Maternity</option>
                               <option value="Dental">Dental</option>
@@ -213,7 +214,7 @@
                         <label class="input-group-text" for="doctor_id">select doctor</label>
                          <select class="custom-select" id="doctor_id" name="doctor_id">
                            @foreach ($doctors as $doctor)
-                           <option value="{{ $doctor->id}}"> {{$doctor->user->name}} </option>
+                           <option value="{{ $doctor->id}}"> Doctor {{$doctor->user->lastName}} </option>
                            @endforeach 
                          </select>
                        </div>
