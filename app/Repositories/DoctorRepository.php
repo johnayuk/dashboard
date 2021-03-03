@@ -19,6 +19,9 @@ class DoctorRepository
         $doctor->dateEmployed = $request['dateEmployed'];
         $doctor->department_id = $request['department_id'];
         $doctor->user_id = $request['user_id'];
+        $doctor->city = $request['city'];
+        $doctor->country = $request['country'];
+        $doctor->postal_code = $request['postal_code'];
 
         // $doctor->password = $request['password'];
 
@@ -47,19 +50,16 @@ class DoctorRepository
     // $where = array('id' => $doctorId);
     $doctor = Doctor::where('id',$id)->first();
 
-    // if (request('image'))
-    // {
-    //     $image = request('image');
-    //     $extension = $image->getClientOriginalExtension();
-    //      $filename = time().'.'.$extension;
-    //      $image->move('uploads/image/doctor',$filename);
-    //      $doctor['image'] = "$filename";
-    // }
     $doctor->age = request('age');
     $doctor->salary = request('salary');
     $doctor->address = request('address');
     $doctor->specialization = request('specialization');
     $doctor->department_id = request('department_id');
+    $doctor->dateEmployed = request('dateEmployed');
+    $doctor->country = request('country');
+    $doctor->postal_code = request('postal_code');
+    $doctor->city = request('city');
+
 
     $doctor->save();
     return $doctor;

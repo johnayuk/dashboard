@@ -16,14 +16,18 @@ class CreateDoctorsTable extends Migration
         Schema::create('doctors', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('department_id');
             $table->string('address');
             $table->string('dateEmployed');
             $table->string('salary');
             $table->string('age');
             $table->string('specialization');
-            $table->unsignedBigInteger('department_id');
-
+            $table->string('city');
+            $table->string('country');
+            $table->string('postal_code');
             $table->timestamps();
+
+
             $table->foreign('user_id')->references('id')->on('users')->OnDelete('cascade');
 
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');

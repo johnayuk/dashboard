@@ -255,10 +255,6 @@
 
     <section class="regervation_part section_padding">
         <div class="container">
-
-           
-
-
             <div class="row align-items-center regervation_content">
                 <div class="col-lg-7">
                     <div class="regervation_part_iner">

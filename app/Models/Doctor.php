@@ -15,7 +15,7 @@ class Doctor extends Model
         }
 
         public function appointments(){
-            return $this->hasMany('App\Models\Appointment');
+            return $this->hasMany('App\Models\Appointment','appointment_id');
         }
 
         public function department(){

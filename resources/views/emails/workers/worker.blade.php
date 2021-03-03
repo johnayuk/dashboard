@@ -1,12 +1,6 @@
 @component('mail::message')
-# Introduction
+ Your Message
+<strong>Message</strong>
 
-Thello
-
-{{-- @component('mail::button', ['url' => ''])
-Button Text
-@endcomponent --}}
-
-Thanks,<br>
-{{ config('app.name') }}
+{{$data['message']}}
 @endcomponent

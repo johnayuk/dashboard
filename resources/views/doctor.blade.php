@@ -77,46 +77,74 @@
                                                 @method('PUT')
         
                                                 <h3>Edit User : {{$doctor->id}}</h3>
-                                                <div class="form-group">
-                                                  <label for="_name">FirstName</label>
-                                                  <input for="name" value="{{ $doctor->first_name}}" type="text" name="first_name" class="form-control"  required>
-                                                </div>
-                        
-                                                <div class="form-group">
-                                                  <label for="last_name">LastName</label>
-                                                  <input for="last_name" value="{{ $doctor->last_name}}" type="text" name="last_name" class="form-control"  required>
-                                                </div>
-                        
-                                                <div class="form-group">
-                                                  <label for="patient_condition">Email</label>
-                                                  <input id="patient_condition" value="{{ $doctor->email}}" type="email" name="email" class="form-control"  required>
+                                                <div class="row">
+                                                  <div class="col-md-5 pr-1">
+                                                    <div class="form-group">
+                                                      <label>Age</label>
+                                                    <input type="text" class="form-control" name="age"  value="{{$doctor->age}}">
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-3 px-1">
+                                                    <div class="form-group">
+                                                      <label>Salary</label>
+                                                    <input type="text" class="form-control" name="salary" value="{{$doctor->salary}}">
+                                                    </div>
+                                                  </div>
+
+                                                  <div class="col-md-3">
+                                                    <div class="form-group">
+                                                      <label>Specialization</label>
+                                                    <input type="text" class="form-control" name="specialization" value="{{$doctor->specialization}}">
+                                                    </div>
+                                                  </div>
                                                 </div>
 
-                                                <div class="form-group">
-                                                  <label for="patient_condition">Password</label>
-                                                  <input id="patient_condition" value="{{ $doctor->password}}" type="password" name="password" class="form-control"  required>
-                                                </div>
-                        
-                                                <div class="form-group">
-                                                  <label for="patient_ward">Specialization</label>
-                                                  <input  type="text" value="{{ $doctor->specialization}}" name="specialization" class="form-control"  required>
-                                                </div>
-                        
-                                               
-                                                <div class="file-group mt-2" >
-                                                    <label for="file-upload" class="custom-file-upload">choose file</label>
-                                                    <input id="file-upload" type="file" name="image"  id="image"/>
-                                                </div>
-                        
+                                                <div class="row">
+                                                  <div class="col-md-8">
+                                                    <div class="form-group">
+                                                      <label>Address</label>
+                                                    <input type="text" class="form-control" name="address" value="{{$doctor->address}}">
+                                                    </div>
+                                                  </div>
 
-                                            <div class="input-group mb-3">  
-                                           <label class="input-group-text" for="doctor_id">Department</label>
-                                            <select class="custom-select" id="department_id" name="department_id">
-                                              @foreach ($departments as $department)
-                                              <option value="{{ $department->id}}"> {{$department->name}} </option>
-                                              @endforeach 
-                                            </select>
-                                          </div>
+                                                  <div class="col-md-4">
+                                                    <div class="form-group">
+                                                      <label>DateEmployed</label>
+                                                    <input type="text" class="form-control" name="dateEmployed" value="{{$doctor->dateEmployed}}">
+                                                    </div>
+                                                  </div>
+                                                </div>
+   
+                                                <div class="row">
+                                                  <div class="col-md-4 pr-1">
+                                                    <div class="form-group">
+                                                      <label>City</label>
+                                                    <input type="text" class="form-control"  name="city"  value="{{$doctor->city}}">
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-4 px-1">
+                                                    <div class="form-group">
+                                                      <label>Country</label>
+                                                      <input type="text" class="form-control"  name="country" value="{{$doctor->country}}">
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-4 pl-1">
+                                                    <div class="form-group">
+                                                      <label>Postal Code</label>
+                                                    <input type="number" class="form-control" name="postal_code" value="{{$doctor->postal_code}}">
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                                <div class="input-group mb-3">  
+                                                  <label class="input-group-text" for="doctor_id">Department</label>
+                                                   <select class="custom-select" id="department_id" name="department_id">
+                                                     @foreach ($departments as $department)
+                                                     <option value="{{ $department->id}}"> {{$department->name}} </option>
+                                                     @endforeach 
+                                                   </select>
+                                                 </div>
+                               
                                                 
                                               </div>
                                               <div class="modal-footer">
@@ -153,31 +181,18 @@
                                             </div>
                                           </div>
                                         </div>
-                                      <button type='button' class="btn btn-danger" data-toggle="modal" data-target="#staticBackdrop{{$doctor->id}}">Delete</button>
+                                      <button type='button' class="btn btn-danger btn-sm" data-toggle="modal" data-target="#staticBackdrop{{$doctor->id}}">Delete</button>
                                     </td>
 
                                <td>
                                   <!-- Button trigger modal -->
-                               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter{{$doctor->id}}">
-                                      View This profile
+                               <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter{{$doctor->id}}">
+                                      profile
                                     </button>
 
                                     <!-- Modal -->
                                   <div class="modal fade" id="exampleModalCenter{{$doctor->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                       <div class="modal-dialog modal-dialog-centered" role="document">
-                                        {{-- <div class="modal-content">
-                                          <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                              <span aria-hidden="true">&times;</span>
-                                            </button>
-                                          </div>
-                                          <div class="modal-body">
-                                               
-                         
-
-                                          </div>
-                                        </div> --}}
                                         <div class="content">
                                           <div class="row">
                                             <div class="col-md-12">
@@ -200,7 +215,7 @@
                                                       <div class="col-md-5 pr-1">
                                                         <div class="form-group">
                                                           <label>Company</label>
-                                                        <input type="text" class="form-control"  disabled placeholder="Company" value="{{$doctor->hospitalName}}">
+                                                        <input type="text" class="form-control"  disabled placeholder="Company" value="{{$doctor->age}}">
                                                         </div>
                                                       </div>
                                                       <div class="col-md-3 px-1">
@@ -254,18 +269,11 @@
                                                       <div class="col-md-4 pl-1">
                                                         <div class="form-group">
                                                           <label>Postal Code</label>
-                                                          <input type="number" class="form-control" placeholder="Postal code">
+                                                          <input type="number" class="form-control" disabled placeholder="Postal code" value="{{$doctor->postal_code}}">
                                                         </div>
                                                       </div>
                                                     </div>
-                                                    {{-- <div class="row">
-                                                      <div class="col-md-12">
-                                                        <div class="form-group">
-                                                          <label>About Me</label>
-                                                          <textarea rows="4" cols="80" class="form-control" placeholder="Here can be your description" value="Mike">Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo.</textarea>
-                                                        </div>
-                                                      </div>
-                                                    </div> --}}
+                                                   
                                                   </form>
                                                 </div>
                                               </div>
@@ -275,8 +283,8 @@
                                </td>
 
                                <td><!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#mail{{$doctor->id}}">
-                                  Launch demo modal
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#mail{{$doctor->id}}">
+                                  send Mail
                                 </button>
                                 
                                 <!-- Modal -->
@@ -284,7 +292,7 @@
                                   <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                       <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel">Emailing</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                           <span aria-hidden="true">&times;</span>
                                         </button>
@@ -293,22 +301,13 @@
                                         <form action="{{url('/workersMail/'.$doctor->id)}}" method="POST">
                                           @csrf
 
-                                        <p>{{$doctor->id}}</p>
+                                        <p>Mail to Doctor {{$doctor->user->lastName}}</p>
                                           
-                                          <div class="form-group">
-                                            <label for="exampleInputEmail1">Email address</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                          </div>
-                                          <div class="form-group">
-                                            <label for="exampleInputPassword1">Password</label>
-                                            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                          </div>
-                                          <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-                                          </div>
-                                          <button type="submit" class="btn btn-primary">Submit</button>
+                                        <div class="form-group">
+                                          <label for="exampleFormControlTextarea1">Type Email</label>
+                                          <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        </div>
+                                          <button type="submit" class="btn btn-primary">Send</button>
                                         </form>
                                       </div>
                                     </div>
@@ -324,8 +323,7 @@
               </div>
             </div>
           </div>
-          {{-- @foreach($hostel->hostelDetails->attachments()->limit(3)->get() as $photos) --}}
-          {{-- @foreach($hostel->hostelDetails->attachments->take(3) as $photos) --}}
+         
 
           
           
@@ -362,6 +360,21 @@
                         <div class="form-group">
                           <label for="patient_ward">Address</label>
                           <input  type="text" name="address" class="form-control"  required>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="patient_ward">Coutry</label>
+                          <input  type="text" name="country" class="form-control"  required>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="patient_ward">City</label>
+                          <input  type="text" name="city" class="form-control"  required>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="patient_ward">Postal Code</label>
+                          <input  type="text" name="postal_code" class="form-control"  required>
                         </div>
 
                         <div class="form-group">

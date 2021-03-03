@@ -11,6 +11,7 @@ use App\Models\Department;
 use App\Models\Nurse;
 use App\Models\AboutUs;
 use App\Models\Admin;
+// use DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,11 +74,14 @@ Route::get('/view_bookings', function () {
     $appointments = Appointment::all();
     if(Auth::user()->role=="admin"){
     return view('bookAppointment',compact('appointments','doctors'));
-    }else {
-        $appointments = Appointment::where('id','doctor')->where('doctor_id',Auth::id());
-        return view('bookAppointment',compact('appointments','doctors'));
-    }
+    } 
+        
+    ($appointments->doctor_id);
+    // dd($appointments);
+        return view('bookAppointment',compact('doctors','appointments'));
+        
    return redirect('homepage');
+
 });
 
 

@@ -44,7 +44,7 @@
     -->
       <div class="logo">
         <a href="/adminPage"  >
-          welcome {{ Auth::user()->lastName }}
+          welcome {{ Auth::user()->firstName }} {{ Auth::user()->lastName }}
           <img class="avatar border-gray"  src="{{asset('uploads/image/'.Auth::user()->image)}}"  width="50px"; height="50px" style="border-radius: 60px" alt="">
         </a>
       </div>

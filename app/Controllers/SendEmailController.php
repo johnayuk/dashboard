@@ -39,10 +39,14 @@ class SendEmailController extends Controller
     {
         $doctor = Doctor::findOrFail($userId);
 
-        // Ship order...
+        $data = request()->validate([
+            'message' => 'required',
+         ]);
 
         // Mail::to($request->user())->send(new Workers($doctor));
-        Mail::to($doctor->user->email)->send(new Workers($doctor));
+        Mail::to($doctor->user->email)->send(new Workers($data));
+
+        return redirect('/doctor')->withErrors(['status'=> 'Thank you for contacting us']);
     }
 
 }

@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\Doctor;
 use App\Repositories\DoctorRepository;
 use App\Requests\DoctorRequest;
+use App\Requests\DoctorUpdate;
 use Validator;
 
 use Illuminate\Http\Request;
@@ -30,7 +31,7 @@ class DoctorController extends Controller
         return redirect('/doctor')->withErrors(['status' => 'doctor record successfully created']);
     }
 
-    public function updateDoctor(Doctor $request, $id)
+    public function updateDoctor(DoctorUpdate $request, $id)
     {
         $validated = $request->validated();
 
