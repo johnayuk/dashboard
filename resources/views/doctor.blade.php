@@ -340,6 +340,24 @@
                   <form method="POST"  enctype="multipart/form-data" files=true action="{{ url('/createDoctor') }}">
                           @csrf
                           @method('PUT')
+
+                          <div class="input-group mb-3">  
+                            <label class="input-group-text" for="doctor_id">select doctor if user</label>
+                             <select class="custom-select" id="user_id" name="user_id">
+                               @foreach ($users as $user)
+                               <option value="{{ $user->id }}"> {{$user->firstName}} {{$user->lastName}}  ({{$user->role}}) </option>
+                               @endforeach 
+                             </select>
+                           </div>
+
+                           <div class="input-group mb-3">  
+                            <label class="input-group-text" for="doctor_id">Department</label>
+                             <select class="custom-select" id="department_id" name="department_id">
+                               @foreach ($departments as $department)
+                               <option value="{{ $department->id}}"> {{$department->name}} </option>
+                               @endforeach 
+                             </select>
+                           </div>
                       
                         <div class="form-group">
                           <label for="patient_ward">dateEmployed</label>
@@ -387,28 +405,11 @@
                       </div>
 
                     
-                    <div class="input-group mb-3">  
-                   <label class="input-group-text" for="doctor_id">Department</label>
-                    <select class="custom-select" id="department_id" name="department_id">
-                      @foreach ($departments as $department)
-                      <option value="{{ $department->id}}"> {{$department->name}} </option>
-                      @endforeach 
-                    </select>
-                  </div>
+                 
 
-                  <div class="input-group mb-3">  
-                    <label class="input-group-text" for="doctor_id">select doctor if user</label>
-                     <select class="custom-select" id="user_id" name="user_id">
-                       @foreach ($users as $user)
-                       <option value="{{ $user->id }}"> {{$user->firstName}} {{$user->lastName}}  ({{$user->role}}) </option>
-                       @endforeach 
-                     </select>
-                   </div>
+                 
 
-                  {{-- <div class="file-group mt-2" >
-                    <label for="file-upload" class="custom-file-upload">choose file</label>
-                    <input id="file-upload" type="file" name="image"  id="image"/>
-                  </div> --}}
+                  
 
                       </div>
                       <div class="modal-footer">
