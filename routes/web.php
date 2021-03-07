@@ -43,8 +43,8 @@ Route::get('/', function () {
 
 Route::get('/homepage', function () {
     $doctors = Doctor::all();
-    $about = AboutUs::all();
-    return view('homepage',compact('doctors','about'));
+    // $about = AboutUs::all();\\
+    return view('homepage',compact('doctors'));
 });
 
 Route::get('/blog','BlogController@index');
@@ -58,7 +58,9 @@ Route::get('/profilePage', function () {
 
 
 Route::post('/sendMail','SendEmailController@sendMail');
-Route::post('/workersMail/{id}','SendEmailController@workersMail');
+Route::post('/doctorsMail/{id}','SendEmailController@DoctorsMail');
+Route::post('/nursesMail/{id}','SendEmailController@NursesMail');
+
 
 Route::get('/patientpdf/{id}','PdfController@downloadPDF');
 

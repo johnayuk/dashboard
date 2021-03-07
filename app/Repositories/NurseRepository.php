@@ -11,27 +11,20 @@ class NurseRepository
 public function create(array $request){
 
         $nurse = new Nurse();
-        // $nurse->first_name = $request['first_name'];
-        // $nurse->last_name = $request['last_name'];
-        // $nurse->email = $request['email'];
+
+        $nurse->age = $request['age'];
+        $nurse->address = $request['address'];
+        $nurse->city = $request['city'];
+        $nurse->country = $request['country'];
+        $nurse->date_employed = $request['date_employed'];
+        $nurse->specialization = $request['specialization'];
+        $nurse->postal_code = $request['postal_code'];
+        $nurse->salary = $request['salary'];
         $nurse->department_id = $request['department_id'];
         $nurse->user_id = $request['user_id'];
+        $nurse->save();
 
-
-        //  if ($request['image']){
-        //            $image = $request['image'];
-        //            $extension = $image->getClientOriginalExtension();
-        //             $filename = time().'.'.$extension;
-        //             $image->move('uploads/image/nurse',$filename);
-        //             $nurse->image = $filename;
-            
-        //         }else{
-        //             return $request;
-        //             $nurse->image='';
-        //         }
-
-                $nurse->save();
-                return $nurse;
+         return $nurse;
 
 
     
@@ -47,18 +40,16 @@ public function create(array $request){
     // $where = array('id' => $doctorId);
     $nurse = Nurse::where('id',$id)->first();
 
-    // if (request('image'))
-    // {
-    //     $image = request('image');
-    //     $extension = $image->getClientOriginalExtension();
-    //      $filename = time().'.'.$extension;
-    //      $image->move('uploads/image/nurse',$filename);
-    //      $nurse['image'] = "$filename";
-    // }
-    // $nurse->first_name = request('first_name');
-    // $nurse->last_name = request('last_name');
-    // $nurse->email = request('email');
+    $nurse->age = request('age');
+    $nurse->address = request('address');
+    $nurse->city = request('city');
+    $nurse->county = request('country');
+    $nurse->date_employed = request('date_employed');
+    $nurse->specialization = request('specialization');
+    $nurse->postal_code = request('postal_code');
     $nurse->department_id = request('department_id');
+    $nurse->salary = request('salary');
+
 
     $nurse->save();
     return $nurse;

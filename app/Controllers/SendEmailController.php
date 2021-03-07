@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Mail\ContactMail;
+use App\Mail\DoctorMail;
+use App\Mail\NurseMail;
 use App\Mail\Workers;
 use Illuminate\Http\Request;
 use App\Mail\SendMail;
@@ -10,7 +12,7 @@ use Illuminate\Support\Facades\Mail;
 Use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Doctor;
-
+use App\Models\Nurse;
 
 class SendEmailController extends Controller
 {
@@ -35,7 +37,7 @@ class SendEmailController extends Controller
     }
 
 
-    public function workersMail(Request $request, $userId)
+    public function DoctorsMail(Request $request, $userId)
     {
         $doctor = Doctor::findOrFail($userId);
 
@@ -43,10 +45,25 @@ class SendEmailController extends Controller
             'message' => 'required',
          ]);
 
-        // Mail::to($request->user())->send(new Workers($doctor));
-        Mail::to($doctor->user->email)->send(new Workers($data));
+       
+        Mail::to($doctor->user->email)->send(new DoctorMail($data));
 
-        return redirect('/doctor')->withErrors(['status'=> 'Thank you for contacting us']);
+        return redirect('/doctor')->withErrors(['status'=> 'Email has been sent...']);
+    }
+
+    
+    public function NursesMail(Request $request, $userId)
+    {
+        $nurse = Nurse::findOrFail($userId);
+
+        $data = request()->validate([
+            'message' => 'required',
+         ]);
+
+        
+        Mail::to($nurse->user->email)->send(new NurseMail($data));
+
+        return redirect('/nurse')->withErrors(['status'=> 'Email has been sent...']);
     }
 
 }

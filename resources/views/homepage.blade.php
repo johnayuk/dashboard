@@ -82,9 +82,9 @@
                 <div class="col-md-6 col-lg-5">
                     <div class="about_us_text">
                         <h2>About us</h2>
-                        @foreach ($about as $about)
+                        {{-- @foreach ($about as $about)
                         <p>{{$about->statement}}</p>
-                        @endforeach
+                        @endforeach --}}
                         <a class="btn_2 " href="/blog">learn more</a>
                         <div class="banner_item">
                             <div class="single_item">

@@ -298,7 +298,7 @@
                                         </button>
                                       </div>
                                       <div class="modal-body">
-                                        <form action="{{url('/workersMail/'.$doctor->id)}}" method="POST">
+                                        <form action="{{url('/doctorsMail/'.$doctor->id)}}" method="POST">
                                           @csrf
 
                                         <p>Mail to Doctor {{$doctor->user->lastName}}</p>
