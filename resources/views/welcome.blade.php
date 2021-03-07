@@ -4,8 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>GoodHealth</title>
-        <link rel="icon" href="uploads/medicine.png">
+        <title>Laravel</title>
         <link rel="stylesheet" href="css/bootstrap.min.css">
 
         <!-- Fonts -->
